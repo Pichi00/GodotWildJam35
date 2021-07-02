@@ -4,13 +4,21 @@ var speed = 120
 var rotation_speed = 5
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
+var bullet_spawn_position = Vector2.ZERO
+export (PackedScene) var bullet
 
 func _physics_process(delta):
 	direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
-	velocity = direction.rotated(deg2rad($Sprite.rotation_degrees))
+	velocity = direction.rotated(deg2rad(rotation_degrees))
 	velocity.normalized()
 	if Input.is_action_pressed("ui_right"):
-		$Sprite.rotation_degrees+=rotation_speed
+		rotation_degrees+=rotation_speed
 	elif Input.is_action_pressed("ui_left"):
-		$Sprite.rotation_degrees-=rotation_speed
+		rotation_degrees-=rotation_speed
 	move_and_slide(velocity * speed)
+	
+
+func _input(event):
+	if event.is_action_pressed("attack"):
+		bullet.instance().set_position($Position2D.position)
+		get_tree().root.add_child(bullet.instance())
