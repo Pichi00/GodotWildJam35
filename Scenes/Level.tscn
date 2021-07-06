@@ -8,15 +8,18 @@
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 88, 72 )
+collision_mask = 2
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 176, 160 )
+hp = 8
+bullet_speed = 120
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+[node name="Background" type="ParallaxBackground" parent="."]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Layer" type="ParallaxLayer" parent="Background"]
 motion_mirroring = Vector2( 300, 225 )
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite" type="Sprite" parent="Background/Layer"]
 texture = ExtResource( 3 )
 centered = false

@@ -4,7 +4,9 @@ var speed = 100
 var rotation_speed = 4.5
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
+
 export (PackedScene) var bullet
+export var bullet_speed = 200
 
 func _physics_process(delta):
 	direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
@@ -20,5 +22,10 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed("attack"):
-		bullet.instance().set_position($Position2D.position)
-		get_tree().root.add_child(bullet.instance())
+		add_child(bullet.instance())
+
+
+func _on_Hitbox_body_entered(body):
+	if body.is_in_group("EnemyBullet"):
+		body.queue_free()
+		print("XD")
