@@ -1,20 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Graphics/spaceship-01.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Player_HPbar.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Graphics/Coin.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
 height = 0.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 9.00602
+radius = 10.0225
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 17
+font_data = ExtResource( 5 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-position = Vector2( 0, 0.670868 )
+collision_mask = 2
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 
@@ -38,8 +49,67 @@ drag_margin_right = 0.5
 drag_margin_bottom = 0.5
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource( 2 )
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="UI" type="Control" parent="UI_Layer"]
+margin_left = 4.0
+margin_right = 304.0
+margin_bottom = 225.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="UI_Layer/UI"]
+margin_left = 23.0
+margin_top = 214.4
+margin_right = 183.0
+margin_bottom = 230.4
+rect_scale = Vector2( 0.5, 0.5 )
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.635294, 0.635294, 0.635294, 1 )
+tint_progress = Color( 0.858824, 0.254902, 0.380392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_Label" type="Label" parent="UI_Layer/UI"]
+margin_left = 2.0
+margin_top = 213.4
+margin_right = 42.0
+margin_bottom = 230.4
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.858824, 0.254902, 0.380392, 1 )
+text = "HP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_Label2" type="Label" parent="UI_Layer/UI"]
+margin_left = 244.0
+margin_top = 209.4
+margin_right = 287.0
+margin_bottom = 226.4
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.698039, 0.698039, 0.698039, 1 )
+text = "160"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coin" type="Sprite" parent="UI_Layer/UI"]
+position = Vector2( 287, 215.4 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 6 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]

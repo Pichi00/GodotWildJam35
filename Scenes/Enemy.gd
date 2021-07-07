@@ -8,15 +8,23 @@ var player_detected = false
 var rotating = false
 var rot_to = 180
 var angle
-
-export var hp = 8
+var rand_dir = 1
+var MAX_HP = 8
+var hp
 export var bullet_speed = 120
 export (PackedScene) var bullet
 
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready():
+	hp = MAX_HP
+	global_position = get_parent().enemy_spawn_position
 	randomize()
+	if randi()%2==0:
+		rand_dir = 1
+	else:
+		rand_dir=-1
+	rotation_degrees = randi()%180 * rand_dir
 
 func _physics_process(delta):
 	if hp <= 0:
@@ -40,19 +48,22 @@ func take_dmg(var dmg_amount):
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
 		player_detected = true
+		$Timer.start()
 
 func _on_Area2D_body_exited(body):
 	if body.is_in_group("Player"):
 		player_detected = false
+		$Timer.stop()
 
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("Bullet"):
 		body.queue_free()
 		take_dmg(body.damage)
+		$HP_Bar.value = (hp * 100) / MAX_HP
 
 
 func _on_Timer_timeout():
 	if player_detected:
 		add_child(bullet.instance())
-		$Timer.wait_time = randi() % 4 + 4
+		$Timer.wait_time = randi() % 2 + 1

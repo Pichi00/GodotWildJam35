@@ -1,22 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/spaceship-01.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/EnemyBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Graphics/HPbar.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
 height = 0.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 112.0
+radius = 128.0
 
 [sub_resource type="CircleShape2D" id=3]
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource( 1 )
+bullet_speed = 160
 bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -33,7 +34,7 @@ collision_layer = 2
 shape = SubResource( 2 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -43,8 +44,21 @@ shape = SubResource( 3 )
 position = Vector2( 0, -8 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
+
+[node name="HP_Bar" type="TextureProgress" parent="."]
+margin_left = -13.0
+margin_top = -1.0
+margin_right = 115.0
+margin_bottom = 127.0
+rect_scale = Vector2( 0.2, 0.2 )
+value = 100.0
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+tint_progress = Color( 0.443137, 0.952941, 0.254902, 1 )
+radial_initial_angle = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_Area2D_body_exited"]

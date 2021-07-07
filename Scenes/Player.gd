@@ -1,12 +1,20 @@
 extends KinematicBody2D
 
-var speed = 100
-var rotation_speed = 4.5
+var speed = 70
+var rotation_speed = 3.5
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
+var MAX_HP = 10
+var hp = 10
+
+onready var hp_bar = $UI_Layer/UI/TextureProgress
 
 export (PackedScene) var bullet
 export var bullet_speed = 200
+
+func _ready():
+	hp = MAX_HP
+	update_hp()
 
 func _physics_process(delta):
 	direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
@@ -28,4 +36,8 @@ func _input(event):
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("EnemyBullet"):
 		body.queue_free()
-		print("XD")
+		hp-=1
+		update_hp()
+
+func update_hp():
+	hp_bar.value = hp * 100 / MAX_HP
