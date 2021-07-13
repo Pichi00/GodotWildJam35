@@ -11,8 +11,10 @@ var angle
 var rand_dir = 1
 var MAX_HP = 8
 var hp
+
 export var bullet_speed = 120
 export (PackedScene) var bullet
+export (PackedScene) var collectible
 
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 
@@ -27,8 +29,6 @@ func _ready():
 	rotation_degrees = randi()%180 * rand_dir
 
 func _physics_process(delta):
-	if hp <= 0:
-		queue_free()
 	if player_detected:
 		velocity =  player.global_position - global_position
 		velocity = velocity.normalized()
@@ -44,6 +44,8 @@ func _physics_process(delta):
 
 func take_dmg(var dmg_amount):
 	hp -= dmg_amount
+	if hp <= 0:
+		destroy()
 
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("Player"):
@@ -55,15 +57,19 @@ func _on_Area2D_body_exited(body):
 		player_detected = false
 		$Timer.stop()
 
-
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("Bullet"):
 		body.queue_free()
 		take_dmg(body.damage)
 		$HP_Bar.value = (hp * 100) / MAX_HP
 
-
 func _on_Timer_timeout():
 	if player_detected:
 		add_child(bullet.instance())
 		$Timer.wait_time = randi() % 2 + 1
+
+func destroy():
+	var new_collectible = collectible.instance()
+	get_parent().call_deferred("add_child",new_collectible)
+	new_collectible.global_position = self.global_position
+	self.queue_free()

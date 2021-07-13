@@ -15,6 +15,7 @@ export var bullet_speed = 200
 func _ready():
 	hp = MAX_HP
 	update_hp()
+	update_money()
 
 func _physics_process(delta):
 	direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
@@ -41,3 +42,13 @@ func _on_Hitbox_body_entered(body):
 
 func update_hp():
 	hp_bar.value = hp * 100 / MAX_HP
+	Global.player_max_hp = MAX_HP
+	Global.player_hp = hp
+
+func add_hp():
+	if hp < MAX_HP:
+		hp+=1
+		update_hp()
+
+func update_money():
+	$UI_Layer/UI/Money_Label.text = str(Global.money)

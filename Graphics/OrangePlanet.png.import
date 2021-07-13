@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MysteriousPlanet.png-58cc9708fa70c54fcec9919cfff4f87e.stex"
+path="res://.import/OrangePlanet.png-cc7be66ea5bddb47bb7a602296334c2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/MysteriousPlanet.png"
-dest_files=[ "res://.import/MysteriousPlanet.png-58cc9708fa70c54fcec9919cfff4f87e.stex" ]
+source_file="res://Graphics/OrangePlanet.png"
+dest_files=[ "res://.import/OrangePlanet.png-cc7be66ea5bddb47bb7a602296334c2a.stex" ]
 
 [params]
 

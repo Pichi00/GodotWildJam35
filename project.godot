@@ -18,6 +18,10 @@ config/name="SpaceGame-RetrogradeJam2"
 run/main_scene="res://Scenes/Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://global.gd"
+
 [display]
 
 window/size/width=300
@@ -72,6 +76,8 @@ attack={
 2d_physics/layer_4="EnemyBullet"
 2d_physics/layer_5="PlayerHitbox"
 2d_physics/layer_6="EnemyHitbox"
+2d_physics/layer_7="Collectible"
+2d_physics/layer_8="Planet"
 
 [physics]
 

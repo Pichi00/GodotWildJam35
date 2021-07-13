@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MysteriousPlanet.png-58cc9708fa70c54fcec9919cfff4f87e.stex"
+path="res://.import/Coin_icon.png-de0ac03665dea358c41291f6c5fecf38.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/MysteriousPlanet.png"
-dest_files=[ "res://.import/MysteriousPlanet.png-58cc9708fa70c54fcec9919cfff4f87e.stex" ]
+source_file="res://Graphics/Coin_icon.png"
+dest_files=[ "res://.import/Coin_icon.png-de0ac03665dea358c41291f6c5fecf38.stex" ]
 
 [params]
 

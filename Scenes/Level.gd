@@ -23,3 +23,9 @@ func enemy_spawn():
 func _on_EnemySpawnTimer_timeout():
 	for i in range(2):
 		enemy_spawn()
+
+func update_money():
+	$Player.update_money()
+
+func add_player_hp():
+	$Player.add_hp()
