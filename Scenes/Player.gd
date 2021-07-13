@@ -26,11 +26,13 @@ func _physics_process(delta):
 		rotation_degrees+=rotation_speed
 	elif Input.is_action_pressed("ui_left"):
 		rotation_degrees-=rotation_speed
+
 	move_and_slide(velocity * speed)
 	
 
 func _input(event):
 	if event.is_action_pressed("attack"):
+		add_child(bullet.instance())
 		add_child(bullet.instance())
 
 
@@ -52,3 +54,7 @@ func add_hp():
 
 func update_money():
 	$UI_Layer/UI/Money_Label.text = str(Global.money)
+
+
+func _on_WorldArea_body_exited(body):
+	body.queue_free()

@@ -1,6 +1,11 @@
 extends Node2D
 
 export (PackedScene) var enemy
+export (PackedScene) var planet
+export (int) var world_radious = 8000
+export (int) var max_enemies = 20
+export (int) var max_planets = 10
+
 var new_enemy
 var rand_dir = 1
 var enemy_spawn_position = Vector2.ZERO
@@ -15,14 +20,16 @@ func enemy_spawn():
 		rand_dir = 1
 	else:
 		rand_dir=-1
-	enemy_spawn_position.x = $Player.global_position.x + 200 * rand_dir
-	enemy_spawn_position.y = $Player.global_position.y + 200 * rand_dir
+	enemy_spawn_position.x = $Player.global_position.x + rand_range(150.0, 300.0) * rand_dir
+	enemy_spawn_position.y = $Player.global_position.y + rand_range(150.0, 300.0) * rand_dir
+	
 	add_child_below_node($Player, enemy.instance())
 	$EnemySpawnTimer.wait_time = randi() % 4 + 6
 
 func _on_EnemySpawnTimer_timeout():
-	for i in range(2):
-		enemy_spawn()
+	for i in range(4):
+		if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
+			enemy_spawn()
 
 func update_money():
 	$Player.update_money()

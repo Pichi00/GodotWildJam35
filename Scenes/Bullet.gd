@@ -8,7 +8,7 @@ export var damage = 1
 
 func _ready():
 	set_as_toplevel(true)
-	global_position = get_parent().get_node("Position2D").global_position
+	global_position = get_parent().get_node("BulletSpawner").global_position
 	rotation_degrees = get_parent().rotation_degrees
 	speed = get_parent().bullet_speed
 	velocity = direction.rotated(deg2rad(rotation_degrees))

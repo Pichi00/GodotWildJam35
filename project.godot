@@ -14,7 +14,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="SpaceGame-RetrogradeJam2"
+config/name="Godot Wild Jam 35 - Space Game"
 run/main_scene="res://Scenes/Level.tscn"
 config/icon="res://icon.png"
 
