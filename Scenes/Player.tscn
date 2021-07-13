@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=2]
@@ -23,7 +23,10 @@ size = 17
 font_data = ExtResource( 5 )
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 8000.0
+radius = 3000.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 1500.0
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -119,10 +122,18 @@ scale = Vector2( 0.749997, 0.6875 )
 texture = ExtResource( 6 )
 
 [node name="WorldArea" type="Area2D" parent="."]
-visible = false
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldArea"]
 shape = SubResource( 5 )
 
+[node name="EnemiesArea" type="Area2D" parent="."]
+visible = false
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesArea"]
+shape = SubResource( 6 )
+
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
 [connection signal="body_exited" from="WorldArea" to="." method="_on_WorldArea_body_exited"]
+[connection signal="body_exited" from="EnemiesArea" to="." method="_on_EnemiesArea_body_exited"]

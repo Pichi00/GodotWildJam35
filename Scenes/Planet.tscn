@@ -9,7 +9,7 @@ radius = 32.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Reveal"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureProgress:value")
 tracks/0/interp = 1
@@ -17,7 +17,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2 ),
+"times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 100.0, 0.0 ]
@@ -43,7 +43,7 @@ margin_bottom = 32.0
 value = 100.0
 rounded = true
 texture_progress = ExtResource( 2 )
-fill_mode = 5
+fill_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }

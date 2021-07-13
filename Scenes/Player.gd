@@ -58,3 +58,6 @@ func update_money():
 
 func _on_WorldArea_body_exited(body):
 	body.queue_free()
+
+func _on_EnemiesArea_body_exited(body):
+	body.queue_free()
