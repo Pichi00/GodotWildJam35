@@ -24,10 +24,6 @@ func _ready():
 	for i in range(max_planets):
 		planet_spawn()
 
-func _input(event):
-	if event.is_action_pressed("pause"):
-		Global.game_state = Global.STATES.PAUSE
-
 func enemy_spawn():
 	enemy_spawn_position = $Player.global_position + (Vector2.UP.rotated(rng.randf_range(0, PI * 2)) * rng.randf_range(min_enemy_distance, max_enemy_distance))
 	add_child_below_node($Player, enemy.instance())

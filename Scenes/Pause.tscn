@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/UpgradeItem.tscn" type="PackedScene" id=2]
 
 [node name="Pause" type="Control" groups=[
 "PauseScreen",
@@ -35,8 +36,56 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -256.0
-margin_bottom = -153.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+follow_focus = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Upgrades/ScrollContainer"]
+margin_right = 100.0
+margin_bottom = 255.0
+custom_constants/vseparation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeItem" parent="TabContainer/Upgrades/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 100.0
+margin_bottom = 60.0
+Title = "Level"
+Description = "Overall level"
+
+[node name="UpgradeItem2" parent="TabContainer/Upgrades/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 65.0
+margin_right = 100.0
+margin_bottom = 125.0
+Title = "Damage"
+Description = "Bullets deal more damage"
+
+[node name="UpgradeItem3" parent="TabContainer/Upgrades/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 130.0
+margin_right = 100.0
+margin_bottom = 190.0
+Title = "Speed"
+
+[node name="UpgradeItem4" parent="TabContainer/Upgrades/ScrollContainer/GridContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 195.0
+margin_right = 100.0
+margin_bottom = 255.0
 
 [node name="Journal" type="Control" parent="TabContainer"]
 visible = false
