@@ -2,13 +2,13 @@ extends Node2D
 
 export (PackedScene) var enemy
 export (PackedScene) var planet
-export (int) var world_radious = 3000
+export (int) var world_radious = 2000
 export (int) var max_enemies = 20
-export (int) var max_planets = 50
+export (int) var max_planets = 40
 export (float) var min_enemy_distance = 200
 export (float) var max_enemy_distance = 500
-export (float) var min_planet_distance = 1000
-export (float) var max_planet_distance = 2800
+export (float) var min_planet_distance = 400
+export (float) var max_planet_distance = 2000
 
 var new_enemy
 var rand_dir = 1
@@ -23,6 +23,10 @@ func _ready():
 		enemy_spawn()
 	for i in range(max_planets):
 		planet_spawn()
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		Global.game_state = Global.STATES.PAUSE
 
 func enemy_spawn():
 	enemy_spawn_position = $Player.global_position + (Vector2.UP.rotated(rng.randf_range(0, PI * 2)) * rng.randf_range(min_enemy_distance, max_enemy_distance))
@@ -46,7 +50,6 @@ func update_money():
 
 func add_player_hp():
 	$Player.add_hp()
-
 
 func _on_Player_destroy_planet(planet):
 	planet.queue_free()

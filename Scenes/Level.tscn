@@ -22,7 +22,7 @@ autostart = true
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="Layer" type="ParallaxLayer" parent="Background"]
-motion_mirroring = Vector2( 300, 225 )
+motion_mirroring = Vector2( 600, 450 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -30,6 +30,8 @@ __meta__ = {
 [node name="Sprite" type="Sprite" parent="Background/Layer"]
 texture = ExtResource( 3 )
 centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 600, 450 )
 __meta__ = {
 "_edit_lock_": true
 }

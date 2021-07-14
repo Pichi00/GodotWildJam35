@@ -32,7 +32,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("zoom"):
 		$Camera2D.zoom = Vector2(18,18)
 	else:
-		$Camera2D.zoom = Vector2(1,1)
+		$Camera2D.zoom = Vector2(1.5,1.5)
 
 	move_and_slide(velocity * speed)
 	

@@ -100,7 +100,6 @@ visible = false
 shape = SubResource( 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-visible = false
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
