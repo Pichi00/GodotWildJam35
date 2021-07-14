@@ -9,7 +9,6 @@ func _ready():
 	connect("update_money", get_parent(),"update_money")
 	connect("add_player_hp", get_parent(),"add_player_hp")
 	type = randi() % (1 + int(Global.player_hp < Global.player_max_hp))
-	print(type)
 	match type:
 		Types.COIN:
 			$AnimatedSprite.animation = "coin"

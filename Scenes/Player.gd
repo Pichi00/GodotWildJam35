@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 70
+var speed = 100
 var rotation_speed = 3.5
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -11,6 +11,8 @@ onready var hp_bar = $UI_Layer/UI/TextureProgress
 
 export (PackedScene) var bullet
 export var bullet_speed = 200
+
+signal destroy_planet(planet)
 
 func _ready():
 	hp = MAX_HP
@@ -26,6 +28,11 @@ func _physics_process(delta):
 		rotation_degrees+=rotation_speed
 	elif Input.is_action_pressed("ui_left"):
 		rotation_degrees-=rotation_speed
+	
+	if Input.is_action_pressed("zoom"):
+		$Camera2D.zoom = Vector2(18,18)
+	else:
+		$Camera2D.zoom = Vector2(1,1)
 
 	move_and_slide(velocity * speed)
 	
@@ -43,21 +50,21 @@ func _on_Hitbox_body_entered(body):
 		update_hp()
 
 func update_hp():
+	hp = clamp(hp,0,MAX_HP)
 	hp_bar.value = hp * 100 / MAX_HP
 	Global.player_max_hp = MAX_HP
 	Global.player_hp = hp
 
 func add_hp():
 	if hp < MAX_HP:
-		hp+=1
+		hp+=2
 		update_hp()
 
 func update_money():
 	$UI_Layer/UI/Money_Label.text = str(Global.money)
 
-
-func _on_WorldArea_body_exited(body):
-	body.queue_free()
-
 func _on_EnemiesArea_body_exited(body):
 	body.queue_free()
+
+func _on_WorldArea_area_exited(area):
+	emit_signal("destroy_planet", area)

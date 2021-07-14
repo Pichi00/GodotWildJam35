@@ -31,7 +31,7 @@ radius = 1500.0
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-collision_mask = 2
+collision_mask = 130
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 
@@ -122,18 +122,19 @@ scale = Vector2( 0.749997, 0.6875 )
 texture = ExtResource( 6 )
 
 [node name="WorldArea" type="Area2D" parent="."]
+collision_layer = 256
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldArea"]
 shape = SubResource( 5 )
 
 [node name="EnemiesArea" type="Area2D" parent="."]
-visible = false
+collision_layer = 512
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesArea"]
 shape = SubResource( 6 )
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
-[connection signal="body_exited" from="WorldArea" to="." method="_on_WorldArea_body_exited"]
+[connection signal="area_exited" from="WorldArea" to="." method="_on_WorldArea_area_exited"]
 [connection signal="body_exited" from="EnemiesArea" to="." method="_on_EnemiesArea_body_exited"]
