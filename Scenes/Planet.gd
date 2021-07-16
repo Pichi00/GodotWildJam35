@@ -13,12 +13,16 @@ func _ready():
 	$TextureProgress.value = 100
 	unlocked = Global.planets_unlocked[type]
 
+#func _process(delta):
+#	if !revealed && !$AnimationPlayer.is_playing():
+#		$TextureProgress.value = move_toward($TextureProgress.value,100, 5)
+#	elif revealed:
+#		$TextureProgress.value = 0
+
 func _on_Planet_body_entered(body):
 	if !revealed:
-		$AnimationPlayer.play("Reveal")
-		revealed = true
-	if !unlocked:
-		Global.planets_unlocked[type] = true
+		$AnimationPlayer.play("Reveal"+str(type))
+	
 
 func set_type():
 	rng.randomize()
@@ -44,5 +48,15 @@ func set_type():
 	planet_value = 10 + type * 10
 
 func reveal_reward():
+	revealed = true
+	$ValueLabel.text="+"+str(planet_value)
+	$AnimationPlayer.play("AddMoney")
 	Global.money += planet_value
+	if !unlocked:
+		Global.planets_unlocked[type] = true
 	emit_signal("reward")
+
+
+func _on_Planet_body_exited(body):
+	if !revealed:
+		$AnimationPlayer.play("ComeBack")

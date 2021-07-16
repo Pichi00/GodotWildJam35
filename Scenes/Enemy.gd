@@ -9,7 +9,7 @@ var rotating = false
 var rot_to = 180
 var angle
 var rand_dir = 1
-var MAX_HP = 8
+var MAX_HP = 9
 var hp
 
 export var bullet_speed = 120
@@ -42,8 +42,8 @@ func _physics_process(delta):
 	rotation_degrees = move_toward(rotation_degrees, angle, rotation_speed)
 	move_and_slide(velocity * speed)
 
-func take_dmg(var dmg_amount):
-	hp -= dmg_amount
+func take_dmg():
+	hp -= Global.player_damage
 	if hp <= 0:
 		destroy()
 
@@ -60,7 +60,7 @@ func _on_Area2D_body_exited(body):
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("Bullet"):
 		body.queue_free()
-		take_dmg(body.damage)
+		take_dmg()
 		$HP_Bar.value = (hp * 100) / MAX_HP
 
 func _on_Timer_timeout():

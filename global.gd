@@ -1,8 +1,17 @@
 extends Node
 
-var money = 500
+var money = 0
 var player_max_hp = 10
 var player_hp = 10
+var player_speed = 90
+var player_speed_lvl = 1
+var player_damage = 1
+
+const MAX_LEVEL = 4
+const MAX_DMG = 3
+const MAX_SPEED_LVL = 3
+
+
 
 enum PLANETS {DIRT,GREEN, PINK, ICE, EARTH, X}
 var planets_unlocked = [false,false,false,false,false,false]

@@ -122,10 +122,10 @@ __meta__ = {
 [node name="Description" type="Label" parent="RightPanel"]
 margin_left = 4.0
 margin_top = 19.0
-margin_right = 153.0
-margin_bottom = 60.0
+margin_right = 244.0
+margin_bottom = 84.0
+rect_scale = Vector2( 0.6, 0.6 )
 text = "Lorem ipsum "
-valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

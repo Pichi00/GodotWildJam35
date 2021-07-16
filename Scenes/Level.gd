@@ -3,10 +3,10 @@ extends Node2D
 export (PackedScene) var enemy
 export (PackedScene) var planet
 export (int) var world_radious = 1200
-export (int) var max_enemies = 20
+export (int) var max_enemies = 10
 export (int) var max_planets = 16
-export (float) var min_enemy_distance = 300
-export (float) var max_enemy_distance = 600
+export (float) var min_enemy_distance = 250
+export (float) var max_enemy_distance = 400
 export (float) var first_min_planet_distance = 300
 export (float) var min_planet_distance = 700
 export (float) var max_planet_distance = 1200
@@ -20,6 +20,7 @@ var planets_array = []
 onready var rng := RandomNumberGenerator.new()
 
 func _ready():
+	$Player.update_money()
 	rng.randomize()
 	for i in range(max_enemies/2):
 		enemy_spawn()

@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var speed = 500
+var speed = 100
 var rotation_speed = 3.5
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -34,12 +34,11 @@ func _physics_process(delta):
 	else:
 		$Camera2D.zoom = Vector2(1.5,1.5)
 
-	move_and_slide(velocity * speed)
+	move_and_slide(velocity * Global.player_speed)
 	
 
 func _input(event):
 	if event.is_action_pressed("attack"):
-		add_child(bullet.instance())
 		add_child(bullet.instance())
 
 
@@ -54,6 +53,8 @@ func update_hp():
 	hp_bar.value = hp * 100 / MAX_HP
 	Global.player_max_hp = MAX_HP
 	Global.player_hp = hp
+	if hp == 0:
+		get_tree().change_scene("res://Scenes/DeathScreen.tscn")
 
 func add_hp():
 	if hp < MAX_HP:

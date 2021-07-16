@@ -2,7 +2,7 @@ extends Control
 
 export (Texture) var Icon
 export (String) var PlanetName
-export (String) var PlanetDescription
+export (String, MULTILINE) var PlanetDescription
 export (Global.PLANETS) var type
 
 func _ready():
