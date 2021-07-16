@@ -12,19 +12,19 @@
 radius = 8.0
 height = 0.0
 
+[sub_resource type="DynamicFont" id=2]
+size = 17
+font_data = ExtResource( 5 )
+
 [sub_resource type="DynamicFont" id=3]
 size = 17
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 17
-font_data = ExtResource( 5 )
-
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 radius = 10.0225
 
 [sub_resource type="CircleShape2D" id=5]
-radius = 2000.0
+radius = 1200.0
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 1000.0
@@ -90,7 +90,7 @@ margin_top = 213.4
 margin_right = 42.0
 margin_bottom = 230.4
 rect_scale = Vector2( 0.6, 0.6 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.858824, 0.254902, 0.380392, 1 )
 text = "HP"
 __meta__ = {
@@ -103,7 +103,7 @@ margin_top = 209.4
 margin_right = 287.0
 margin_bottom = 226.4
 rect_scale = Vector2( 0.8, 0.8 )
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.698039, 0.698039, 0.698039, 1 )
 text = "0"
 align = 2
@@ -129,7 +129,7 @@ collision_layer = 16
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="WorldArea" type="Area2D" parent="."]
 visible = false

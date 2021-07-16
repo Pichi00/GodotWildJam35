@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.188235, 0.203922, 0.309804, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -46.5
+margin_top = 12.0
+margin_right = 46.5
+margin_bottom = 26.0
+text = "Space Explorer"
+
+[node name="PlayButton" type="Button" parent="."]
+margin_left = 122.0
+margin_top = 60.5
+margin_right = 182.0
+margin_bottom = 80.5
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="."]
+margin_left = 122.0
+margin_top = 99.0
+margin_right = 182.0
+margin_bottom = 119.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]

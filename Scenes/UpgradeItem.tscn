@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UpgradeItem.gd" type="Script" id=2]
 [ext_resource path="res://Graphics/Coin_icon.png" type="Texture" id=3]
+[ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=4]
 
 [node name="UpgradeItem" type="Control"]
 anchor_right = 0.333
@@ -10,6 +11,7 @@ anchor_bottom = 0.267
 margin_right = 180.1
 margin_bottom = -0.0750046
 rect_min_size = Vector2( 280, 60 )
+theme = ExtResource( 4 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -41,21 +43,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="LeftPanel"]
-margin_left = 78.0044
-margin_top = 36.4338
-margin_right = 114.004
-margin_bottom = 56.4338
+[node name="BuyButton" type="Button" parent="LeftPanel"]
+margin_left = 77.0
+margin_top = 35.0
+margin_right = 116.0
+margin_bottom = 55.0
 text = "Buy"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Icon" type="TextureRect" parent="LeftPanel"]
-margin_left = 3.10561
-margin_top = 19.2155
-margin_right = 67.1056
-margin_bottom = 83.2155
+margin_left = 4.0
+margin_top = 18.0
+margin_right = 68.0
+margin_bottom = 82.0
 rect_scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 1 )
 __meta__ = {
@@ -63,10 +65,10 @@ __meta__ = {
 }
 
 [node name="Coin" type="TextureRect" parent="LeftPanel"]
-margin_left = 106.497
-margin_top = 20.0
-margin_right = 118.497
-margin_bottom = 37.0
+margin_left = 106.0
+margin_top = 21.0
+margin_right = 118.0
+margin_bottom = 38.0
 rect_scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -76,9 +78,9 @@ __meta__ = {
 [node name="Title" type="Label" parent="LeftPanel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -48.7351
+margin_left = -49.0
 margin_top = 3.0
-margin_right = 49.2649
+margin_right = 49.0
 margin_bottom = 17.0
 text = "Title"
 align = 1
@@ -108,9 +110,9 @@ __meta__ = {
 }
 
 [node name="Value" type="Label" parent="RightPanel"]
-margin_left = 96.0
+margin_left = 118.0
 margin_top = 1.0
-margin_right = 122.0
+margin_right = 145.0
 margin_bottom = 15.0
 text = "1"
 __meta__ = {
@@ -128,3 +130,5 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="LeftPanel/BuyButton" to="." method="_on_BuyButton_pressed"]
