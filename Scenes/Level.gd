@@ -3,10 +3,10 @@ extends Node2D
 export (PackedScene) var enemy
 export (PackedScene) var planet
 export (int) var world_radious = 1200
-export (int) var max_enemies = 10
+export (int) var max_enemies = 8
 export (int) var max_planets = 16
 export (float) var min_enemy_distance = 250
-export (float) var max_enemy_distance = 400
+export (float) var max_enemy_distance = 450
 export (float) var first_min_planet_distance = 300
 export (float) var min_planet_distance = 700
 export (float) var max_planet_distance = 1200
@@ -22,15 +22,18 @@ onready var rng := RandomNumberGenerator.new()
 func _ready():
 	$Player.update_money()
 	rng.randomize()
-	for i in range(max_enemies/2):
+	for i in range(max_enemies):
 		enemy_spawn()
 	for i in range(max_planets):
 		planet_spawn(first_min_planet_distance, max_planet_distance)
 
 func enemy_spawn():
+	var new_enemy = enemy.instance()
 	enemy_spawn_position = $Player.global_position + (Vector2.UP.rotated(rng.randf_range(0, PI * 2)) * rng.randf_range(min_enemy_distance, max_enemy_distance))
-	add_child_below_node($Player, enemy.instance())
-	$EnemySpawnTimer.wait_time = randi() % 4 + 6
+#	add_child_below_node($Player, enemy.instance())
+	call_deferred("add_child_below_node",$Player, new_enemy)
+	new_enemy.position = enemy_spawn_position
+#	$EnemySpawnTimer.wait_time = randi() % 4 + 6
 
 func planet_spawn(min_dist, max_dist):
 	var new_planet = planet.instance()
@@ -51,10 +54,10 @@ func planet_spawn(min_dist, max_dist):
 	new_planet.position = new_pos
 	planets_array.append(new_planet)
 
-func _on_EnemySpawnTimer_timeout():
-	for i in range(4):
-		if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
-			enemy_spawn()
+#func _on_EnemySpawnTimer_timeout():
+#	for i in range(4):
+#		if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
+#			enemy_spawn()
 
 func update_money():
 	$Player.update_money()
@@ -67,3 +70,9 @@ func _on_Player_destroy_planet(planet):
 	planets_array.erase(planet)
 	if(get_tree().get_nodes_in_group("Planet").size() <= max_planets):
 		planet_spawn(min_planet_distance, max_planet_distance)
+
+
+func _on_Player_destroy_enemy(enemy):
+	enemy.queue_free()
+	if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
+		enemy_spawn()

@@ -13,6 +13,7 @@ export (PackedScene) var bullet
 export var bullet_speed = 200
 
 signal destroy_planet(planet)
+signal destroy_enemy(enemy)
 
 func _ready():
 	hp = MAX_HP
@@ -30,7 +31,7 @@ func _physics_process(delta):
 		rotation_degrees-=rotation_speed
 	
 	if Input.is_action_pressed("zoom"):
-		$Camera2D.zoom = Vector2(18,18)
+		$Camera2D.zoom = Vector2(8,8)
 	else:
 		$Camera2D.zoom = Vector2(1.5,1.5)
 
@@ -65,7 +66,7 @@ func update_money():
 	$UI_Layer/UI/Money_Label.text = str(Global.money)
 
 func _on_EnemiesArea_body_exited(body):
-	body.queue_free()
+	emit_signal("destroy_enemy", body)
 
 func _on_WorldArea_area_exited(area):
 	emit_signal("destroy_planet", area)

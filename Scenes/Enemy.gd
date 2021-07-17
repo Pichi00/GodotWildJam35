@@ -16,11 +16,14 @@ export var bullet_speed = 120
 export (PackedScene) var bullet
 export (PackedScene) var collectible
 
+signal destroy_enemy(enemy)
+
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready():
+	connect("destroy_enemy",get_parent(),"_on_Player_destroy_enemy")
 	hp = MAX_HP
-	global_position = get_parent().enemy_spawn_position
+	#global_position = get_parent().enemy_spawn_position
 	randomize()
 	if randi()%2==0:
 		rand_dir = 1
@@ -69,6 +72,7 @@ func _on_Timer_timeout():
 		$Timer.wait_time = randi() % 2 + 1
 
 func destroy():
+	emit_signal("destroy_enemy", self)
 	var new_collectible = collectible.instance()
 	get_parent().call_deferred("add_child",new_collectible)
 	new_collectible.global_position = self.global_position

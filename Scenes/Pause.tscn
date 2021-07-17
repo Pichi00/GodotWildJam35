@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UpgradeItem.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Graphics/lvlup.png" type="Texture" id=9]
 [ext_resource path="res://Graphics/dmgup.png" type="Texture" id=10]
 [ext_resource path="res://Graphics/speedup.png" type="Texture" id=11]
+[ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=12]
 
 [node name="Pause" type="Control" groups=[
 "PauseScreen",
@@ -18,6 +19,7 @@
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+theme = ExtResource( 12 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
@@ -26,6 +28,10 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -0.445465
+margin_top = -0.44545
+margin_right = -0.445465
+margin_bottom = -0.44545
 color = Color( 0.0862745, 0.0156863, 0.160784, 0.721569 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,10 +49,10 @@ __meta__ = {
 [node name="Upgrades" type="Control" parent="TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
+margin_left = 8.0
+margin_top = 27.0
 margin_right = -4.0
-margin_bottom = -4.0
+margin_bottom = -8.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Upgrades"]
 anchor_right = 1.0
@@ -100,10 +106,10 @@ Description = "Increases speed of your spaceship.
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
+margin_left = 8.0
+margin_top = 27.0
 margin_right = -4.0
-margin_bottom = -4.0
+margin_bottom = -8.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Journal"]
 anchor_right = 1.0

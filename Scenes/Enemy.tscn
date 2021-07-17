@@ -59,7 +59,7 @@ rect_scale = Vector2( 0.2, 0.2 )
 value = 100.0
 texture_progress = ExtResource( 4 )
 fill_mode = 3
-tint_progress = Color( 0.443137, 0.952941, 0.254902, 1 )
+tint_progress = Color( 0.054902, 0.74902, 0.356863, 1 )
 radial_initial_angle = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
