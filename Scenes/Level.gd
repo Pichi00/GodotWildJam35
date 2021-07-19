@@ -76,3 +76,9 @@ func _on_Player_destroy_enemy(enemy):
 	enemy.queue_free()
 	if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
 		enemy_spawn()
+	
+
+func coin_sound():
+	$CoinSound.play()
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=5]
 [ext_resource path="res://Graphics/Coin_icon.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/Pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sounds/Laser_Shoot4.wav" type="AudioStream" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -148,6 +149,12 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesArea"]
 shape = SubResource( 6 )
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="." groups=[
+"SFX",
+]]
+stream = ExtResource( 8 )
+volume_db = -20.0
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
 [connection signal="area_exited" from="WorldArea" to="." method="_on_WorldArea_area_exited"]

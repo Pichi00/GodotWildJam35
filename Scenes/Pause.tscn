@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UpgradeItem.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://Graphics/dmgup.png" type="Texture" id=10]
 [ext_resource path="res://Graphics/speedup.png" type="Texture" id=11]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=12]
+[ext_resource path="res://Graphics/SoundOn.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/SoundOff.png" type="Texture" id=14]
 
 [node name="Pause" type="Control" groups=[
 "PauseScreen",
@@ -24,6 +26,8 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": true
 }
+soundOnIcon = ExtResource( 13 )
+soundOffIcon = ExtResource( 14 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -47,6 +51,7 @@ __meta__ = {
 }
 
 [node name="Upgrades" type="Control" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -103,7 +108,6 @@ Description = "Increases speed of your spaceship.
 [Permanent upgrade]"
 
 [node name="Journal" type="Control" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -126,6 +130,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 280.0
 margin_bottom = 60.0
+PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
 
 [node name="JournalEntry2" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
 visible = false
@@ -135,7 +140,7 @@ margin_right = 280.0
 margin_bottom = 60.0
 Icon = ExtResource( 4 )
 PlanetName = "Netre Gorsef"
-PlanetDescription = "Green planet full of forests."
+PlanetDescription = "Green planet full of wild forests. It is inhabited by over 3500 varoious species."
 type = 1
 
 [node name="JournalEntry3" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
@@ -146,7 +151,7 @@ margin_right = 280.0
 margin_bottom = 60.0
 Icon = ExtResource( 5 )
 PlanetName = "Kinpy"
-PlanetDescription = "Planet covered with pink dust."
+PlanetDescription = "Planet covered with pink dust. There is no life on it's surface. However it's beautiful caves are occupied by various creatures."
 type = 2
 
 [node name="JournalEntry4" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
@@ -157,7 +162,7 @@ margin_right = 280.0
 margin_bottom = 60.0
 Icon = ExtResource( 6 )
 PlanetName = "Eilubec"
-PlanetDescription = "Planet covered with ice."
+PlanetDescription = "Ice planet with over 5000 ocean lifeforms and 1500 land species  confirmed."
 type = 3
 
 [node name="JournalEntry5" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
@@ -167,8 +172,8 @@ anchor_bottom = 0.0
 margin_right = 280.0
 margin_bottom = 60.0
 Icon = ExtResource( 7 )
-PlanetName = "Earth-like"
-PlanetDescription = "Planet similar to earth"
+PlanetName = "Keli-Thare"
+PlanetDescription = "A planet with a climate similar to Earth inhabited by human-like life forms wielding more advanced technology than humans."
 type = 4
 
 [node name="JournalEntry6" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
@@ -181,3 +186,16 @@ Icon = ExtResource( 8 )
 PlanetName = "Planet X"
 PlanetDescription = "Planet X"
 type = 5
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 156.246
+margin_top = 5.11815
+margin_right = 166.246
+margin_bottom = 14.1181
+rect_scale = Vector2( 1.2, 1.2 )
+texture_normal = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -69,6 +69,7 @@ func _on_Hitbox_body_entered(body):
 func _on_Timer_timeout():
 	if player_detected:
 		add_child(bullet.instance())
+		$ShotSound.play()
 		$Timer.wait_time = randi() % 2 + 1
 
 func destroy():

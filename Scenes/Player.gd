@@ -30,10 +30,10 @@ func _physics_process(delta):
 	elif Input.is_action_pressed("ui_left"):
 		rotation_degrees-=rotation_speed
 	
-	if Input.is_action_pressed("zoom"):
-		$Camera2D.zoom = Vector2(8,8)
-	else:
-		$Camera2D.zoom = Vector2(1.5,1.5)
+#	if Input.is_action_pressed("zoom"):
+#		$Camera2D.zoom = Vector2(8,8)
+#	else:
+#		$Camera2D.zoom = Vector2(1.5,1.5)
 
 	move_and_slide(velocity * Global.player_speed)
 	
@@ -41,6 +41,7 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("attack"):
 		add_child(bullet.instance())
+		$ShotSound.play()
 
 
 func _on_Hitbox_body_entered(body):

@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/spaceship-01.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/EnemyBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Graphics/HPbar.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Collectible.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sounds/Laser_Shoot5.wav" type="AudioStream" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -64,6 +65,12 @@ radial_initial_angle = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="." groups=[
+"SFX",
+]]
+stream = ExtResource( 6 )
+volume_db = -20.0
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_Area2D_body_exited"]

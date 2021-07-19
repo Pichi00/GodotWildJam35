@@ -41,7 +41,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOver" type="Label" parent="."]
+[node name="Title" type="Label" parent="."]
 margin_top = 35.0
 margin_right = 427.0
 margin_bottom = 87.0

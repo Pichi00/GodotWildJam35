@@ -4,11 +4,13 @@ var revealed = false
 var rng = RandomNumberGenerator.new()
 var type = Global.PLANETS.DIRT
 var unlocked = false
-var planet_value = 10
+var planet_value = 5
 signal reward
 
 func _ready():
 	connect("reward", get_parent(),"update_money")
+	$ValueLabel.hide()
+	$CanvasLayer/NewEntry.hide()
 	set_type()
 	$TextureProgress.value = 100
 	unlocked = Global.planets_unlocked[type]
@@ -49,11 +51,15 @@ func set_type():
 
 func reveal_reward():
 	revealed = true
+	if(type==Global.PLANETS.X):
+		get_tree().change_scene("res://Scenes/WinScreen.tscn")
 	$ValueLabel.text="+"+str(planet_value)
 	$AnimationPlayer.play("AddMoney")
+	$RevealSound.play()
 	Global.money += planet_value
 	if !unlocked:
 		Global.planets_unlocked[type] = true
+		$AnimationPlayer.play("NewEntry")
 	emit_signal("reward")
 
 
