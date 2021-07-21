@@ -1,0 +1,161 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Scenes/Actors/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Graphics/Actors/spaceship-01.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/UI/Player_HPbar.png" type="Texture" id=4]
+[ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=5]
+[ext_resource path="res://Graphics/UI/Coin_icon.png" type="Texture" id=6]
+[ext_resource path="res://Scenes/UI/Pause.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sounds/SFX/Laser_Shoot4.wav" type="AudioStream" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 8.0
+height = 0.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 17
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 17
+outline_size = 2
+outline_color = Color( 0.47451, 0.47451, 0.47451, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 10.0225
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 1200.0
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 600.0
+
+[node name="Player" type="KinematicBody2D" groups=[
+"Player",
+]]
+collision_mask = 130
+script = ExtResource( 1 )
+bullet = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="BulletSpawner" type="Position2D" parent="." groups=[
+"BulletSpawn",
+]]
+position = Vector2( 0, -8 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+smoothing_enabled = true
+drag_margin_left = 0.5
+drag_margin_top = 0.5
+drag_margin_right = 0.5
+drag_margin_bottom = 0.5
+
+[node name="UI_Layer" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="UI" type="Control" parent="UI_Layer"]
+margin_left = 4.0
+margin_right = 304.0
+margin_bottom = 225.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="UI_Layer/UI"]
+margin_left = 23.0
+margin_top = 214.4
+margin_right = 183.0
+margin_bottom = 230.4
+rect_scale = Vector2( 0.5, 0.5 )
+value = 70.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 4 )
+tint_under = Color( 0.635294, 0.635294, 0.635294, 1 )
+tint_progress = Color( 0.858824, 0.254902, 0.380392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HP_Label" type="Label" parent="UI_Layer/UI"]
+margin_left = 2.0
+margin_top = 213.4
+margin_right = 42.0
+margin_bottom = 230.4
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.858824, 0.254902, 0.380392, 1 )
+text = "HP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" parent="UI_Layer/UI" instance=ExtResource( 7 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -4.0
+margin_right = 296.0
+margin_bottom = 225.0
+
+[node name="Money_Label" type="Label" parent="UI_Layer/UI"]
+margin_left = 110.0
+margin_top = 3.0
+margin_right = 326.0
+margin_bottom = 20.0
+rect_scale = Vector2( 0.8, 0.8 )
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.698039, 0.698039, 0.698039, 1 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="UI_Layer/UI"]
+position = Vector2( 290.5, 9.50002 )
+scale = Vector2( 0.749997, 0.6875 )
+texture = ExtResource( 6 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 4 )
+
+[node name="WorldArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldArea"]
+shape = SubResource( 5 )
+
+[node name="EnemiesArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesArea"]
+shape = SubResource( 6 )
+
+[node name="ShotSound" type="AudioStreamPlayer" parent="." groups=[
+"SFX",
+]]
+stream = ExtResource( 8 )
+volume_db = -20.0
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_Hitbox_body_entered"]
+[connection signal="area_exited" from="WorldArea" to="." method="_on_WorldArea_area_exited"]
+[connection signal="body_exited" from="EnemiesArea" to="." method="_on_EnemiesArea_body_exited"]

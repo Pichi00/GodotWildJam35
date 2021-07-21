@@ -1,0 +1,140 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=2]
+[ext_resource path="res://Graphics/Environment/Planets/XPlanet.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/UI/itch.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/UI/twitter.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/UI/WinScreen.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 34
+font_data = ExtResource( 2 )
+
+[node name="WinScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0862745, 0.0156863, 0.160784, 0.721569 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XPlanet" type="Sprite" parent="."]
+position = Vector2( 56, 144 )
+texture = ExtResource( 3 )
+
+[node name="Title" type="Label" parent="."]
+margin_top = 24.0
+margin_right = 500.0
+margin_bottom = 76.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 1 )
+text = "Congratulations!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Separator" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -86.0
+margin_top = -47.5
+margin_right = 94.0
+margin_bottom = -45.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 80.0
+margin_right = 300.0
+margin_bottom = 94.0
+text = "You've discovered the Planet X."
+align = 1
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 120.0
+margin_top = 112.0
+margin_right = 300.0
+margin_bottom = 128.0
+text = "Thank you for playing!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 160.0
+margin_top = 209.0
+margin_right = 244.0
+margin_bottom = 225.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "@pichiDev"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 229.0
+margin_top = 209.0
+margin_right = 313.0
+margin_bottom = 225.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "Pichi Dev"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Twitter" type="TextureButton" parent="."]
+margin_left = 176.0
+margin_top = 168.0
+margin_right = 240.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Itch" type="TextureButton" parent="."]
+margin_left = 240.0
+margin_top = 168.0
+margin_right = 304.0
+margin_bottom = 232.0
+rect_scale = Vector2( 0.6, 0.6 )
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 16.0
+margin_top = 200.0
+margin_right = 91.0
+margin_bottom = 218.0
+text = "Main menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="Twitter" to="." method="_on_Twitter_pressed"]
+[connection signal="pressed" from="Itch" to="." method="_on_Itch_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -8,6 +8,7 @@ var player_speed_lvl = 1
 var player_damage = 1
 var level = 1
 var soundOn = true
+var soundLevel = -40
 
 const MAX_LEVEL = 4
 const MAX_DMG = 3
