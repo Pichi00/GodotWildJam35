@@ -10,7 +10,7 @@ func _ready():
 	set_as_toplevel(true)
 	global_position = get_parent().get_node("BulletSpawner").global_position
 	rotation_degrees = get_parent().rotation_degrees
-	speed = get_parent().bullet_speed
+	speed = 200
 	velocity = direction.rotated(deg2rad(rotation_degrees))
 
 func _physics_process(delta):

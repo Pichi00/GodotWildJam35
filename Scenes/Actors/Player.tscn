@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Objects/Bullet.tscn" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://Graphics/UI/Coin_icon.png" type="Texture" id=6]
 [ext_resource path="res://Scenes/UI/Pause.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sounds/SFX/Laser_Shoot4.wav" type="AudioStream" id=8]
+[ext_resource path="res://Graphics/Actors/Capsule.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Actors/Wings.png" type="Texture" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 8.0
@@ -39,17 +41,27 @@ collision_mask = 130
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
 
+[node name="Wings" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
+
+[node name="BulletSpawner" type="Position2D" parent="Wings" groups=[
+"BulletSpawn",
+]]
+position = Vector2( 0, -16 )
+scale = Vector2( 2, 2 )
+
+[node name="Capsule" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 9 )
+
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 1 )
-
-[node name="BulletSpawner" type="Position2D" parent="." groups=[
-"BulletSpawn",
-]]
-position = Vector2( 0, -8 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -144,6 +156,7 @@ collision_mask = 128
 shape = SubResource( 5 )
 
 [node name="EnemiesArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 512
 collision_mask = 2
 

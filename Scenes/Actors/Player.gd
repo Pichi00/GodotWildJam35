@@ -22,25 +22,28 @@ func _ready():
 
 func _physics_process(delta):
 	direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
-	velocity = direction.rotated(deg2rad(rotation_degrees))
+	velocity = direction.rotated(deg2rad($Capsule.rotation_degrees))
 	velocity = velocity.normalized()
 	
 	if Input.is_action_pressed("ui_right"):
-		rotation_degrees+=rotation_speed
+		$Capsule.rotation_degrees+=rotation_speed
 	elif Input.is_action_pressed("ui_left"):
-		rotation_degrees-=rotation_speed
+		$Capsule.rotation_degrees-=rotation_speed
 	
-#	if Input.is_action_pressed("zoom"):
-#		$Camera2D.zoom = Vector2(8,8)
-#	else:
-#		$Camera2D.zoom = Vector2(1.5,1.5)
+	$Wings.look_at(get_global_mouse_position())
+	$Wings.rotation_degrees += 90
+	
+	if Input.is_action_pressed("zoom"):
+		$Camera2D.zoom = Vector2(8,8)
+	else:
+		$Camera2D.zoom = Vector2(1.5,1.5)
 
 	move_and_slide(velocity * Global.player_speed)
 	
 
 func _input(event):
 	if event.is_action_pressed("attack"):
-		add_child(bullet.instance())
+		$Wings.add_child(bullet.instance())
 		$ShotSound.play()
 
 
