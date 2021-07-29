@@ -68,7 +68,9 @@ func _on_Hitbox_body_entered(body):
 
 func _on_Timer_timeout():
 	if player_detected:
-		add_child(bullet.instance())
+		var new_bullet = bullet.instance()
+		add_child(new_bullet)
+		new_bullet.global_position = $BulletSpawner.global_position
 		$ShotSound.play()
 		$Timer.wait_time = randi() % 2 + 1
 

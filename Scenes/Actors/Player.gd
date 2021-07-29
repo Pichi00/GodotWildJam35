@@ -36,14 +36,21 @@ func _physics_process(delta):
 	if Input.is_action_pressed("zoom"):
 		$Camera2D.zoom = Vector2(8,8)
 	else:
-		$Camera2D.zoom = Vector2(1.5,1.5)
+		$Camera2D.zoom = Vector2(1.3,1.3)
 
 	move_and_slide(velocity * Global.player_speed)
 	
 
 func _input(event):
 	if event.is_action_pressed("attack"):
-		$Wings.add_child(bullet.instance())
+		match Global.gun_level:
+			2:
+				shot_two()
+			3:
+				shot_one()
+				shot_two()
+			_:
+				shot_one()
 		$ShotSound.play()
 
 
@@ -74,3 +81,17 @@ func _on_EnemiesArea_body_exited(body):
 
 func _on_WorldArea_area_exited(area):
 	emit_signal("destroy_planet", area)
+	
+
+func shot_one():
+	var new_bullet = bullet.instance()
+	$Wings.add_child(new_bullet)
+	new_bullet.global_position = $Wings/BulletSpawner.global_position
+
+func shot_two():
+	var new_bullet_1 = bullet.instance()
+	var new_bullet_2 = bullet.instance()
+	$Wings.add_child(new_bullet_1)
+	new_bullet_1.global_position = $Wings/BulletSpawner1.global_position
+	$Wings.add_child(new_bullet_2)
+	new_bullet_2.global_position = $Wings/BulletSpawner2.global_position
