@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Capsule3.png-f29ef9ea7b7a8dbc21d9802a0325a24c.stex"
+path="res://.import/spaceship1.png-c1455eb6a64e02248f1e635756c02914.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Graphics/Actors/Capsule3.png"
-dest_files=[ "res://.import/Capsule3.png-f29ef9ea7b7a8dbc21d9802a0325a24c.stex" ]
+source_file="res://Graphics/Actors/spaceship1.png"
+dest_files=[ "res://.import/spaceship1.png-c1455eb6a64e02248f1e635756c02914.stex" ]
 
 [params]
 

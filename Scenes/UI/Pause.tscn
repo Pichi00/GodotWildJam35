@@ -51,7 +51,6 @@ __meta__ = {
 }
 
 [node name="Upgrades" type="Control" parent="TabContainer"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -108,6 +107,7 @@ Description = "Increases speed of your spaceship.
 [Permanent upgrade]"
 
 [node name="Journal" type="Control" parent="TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 8.0
@@ -140,7 +140,7 @@ margin_right = 280.0
 margin_bottom = 60.0
 Icon = ExtResource( 4 )
 PlanetName = "Netre Gorsef"
-PlanetDescription = "Green planet full of wild forests. It is inhabited by over 3500 varoious species."
+PlanetDescription = "Green planet full of wild forests. It is inhabited by over 3500 various  species."
 type = 1
 
 [node name="JournalEntry3" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
@@ -151,7 +151,7 @@ margin_right = 280.0
 margin_bottom = 60.0
 Icon = ExtResource( 5 )
 PlanetName = "Kinpy"
-PlanetDescription = "Planet covered with pink dust. There is no life on it's surface. However it's beautiful caves are occupied by various creatures."
+PlanetDescription = "Planet covered with pink dust. There is no life on its surface. However its beautiful caves are occupied by various creatures."
 type = 2
 
 [node name="JournalEntry4" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]

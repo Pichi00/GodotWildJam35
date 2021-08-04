@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Graphics/Environment/Planets/GreenPlanet.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Environment/Planets/MysteriousPlanet.png" type="Texture" id=2]
@@ -11,30 +11,31 @@
 [ext_resource path="res://Fonts/04B_30__.TTF" type="DynamicFontData" id=9]
 [ext_resource path="res://Sounds/SFX/Powerup.wav" type="AudioStream" id=10]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=11]
+[ext_resource path="res://Graphics/Environment/clouds.png" type="Texture" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 6 )
-region = Rect2( 0, 0, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=3]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 80, 80 )
 
-[sub_resource type="AtlasTexture" id=5]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 8 )
 region = Rect2( 0, 0, 80, 80 )
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 80, 80 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
@@ -45,27 +46,27 @@ animations = [ {
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Earth",
+"name": "Pink",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "Dirt",
+"name": "Ice",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Pink",
+"name": "Green",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "Ice",
+"name": "Earth",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
 "loop": true,
-"name": "Green",
+"name": "Dirt",
 "speed": 5.0
 } ]
 
@@ -154,6 +155,94 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=20]
+resource_name = "NewReveal"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Clouds/1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 23, 5 ), Vector2( 53, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Clouds/2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 23 ), Vector2( 32, 23 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Clouds/3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -16, 8 ), Vector2( -46, 8 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Clouds/4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13, -18 ), Vector2( 43, -18 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Clouds/5:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -12, -19 ), Vector2( -42, -19 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Clouds:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.796078, 0.796078, 0.796078, 1 ), Color( 0.796078, 0.796078, 0.796078, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -371,13 +460,16 @@ collision_mask = 257
 script = ExtResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 frames = SubResource( 7 )
 animation = "Earth"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 8 )
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
+visible = false
 margin_left = -32.0
 margin_top = -32.0
 margin_right = 32.0
@@ -394,6 +486,7 @@ __meta__ = {
 anims/AddMoney = SubResource( 9 )
 anims/ComeBack = SubResource( 10 )
 anims/NewEntry = SubResource( 11 )
+anims/NewReveal = SubResource( 20 )
 anims/Reveal = SubResource( 12 )
 anims/Reveal0 = SubResource( 13 )
 anims/Reveal1 = SubResource( 14 )
@@ -455,6 +548,44 @@ the journal!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Clouds" type="Node2D" parent="."]
+modulate = Color( 0.796078, 0.796078, 0.796078, 1 )
+
+[node name="1" type="Sprite" parent="Clouds"]
+position = Vector2( 23, 5 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 10, 7, 28, 23 )
+
+[node name="2" type="Sprite" parent="Clouds"]
+position = Vector2( 2, 23 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 52, 6, 48, 27 )
+
+[node name="3" type="Sprite" parent="Clouds"]
+position = Vector2( -16, 8 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 104, 7, 46, 26 )
+
+[node name="4" type="Sprite" parent="Clouds"]
+position = Vector2( 13, -18 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 156, 2, 47, 30 )
+
+[node name="5" type="Sprite" parent="Clouds"]
+position = Vector2( -12, -19 )
+scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 12 )
+region_enabled = true
+region_rect = Rect2( 208, 2, 40, 28 )
 
 [connection signal="body_entered" from="." to="." method="_on_Planet_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Planet_body_exited"]

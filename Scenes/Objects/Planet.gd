@@ -23,7 +23,8 @@ func _ready():
 
 func _on_Planet_body_entered(body):
 	if !revealed:
-		$AnimationPlayer.play("Reveal"+str(type))
+		#$AnimationPlayer.play("Reveal"+str(type))
+		$AnimationPlayer.play("NewReveal")
 	
 
 func set_type():
