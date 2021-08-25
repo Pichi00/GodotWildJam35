@@ -1,13 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/UI/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/UpgradeItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/JournalEntry.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Graphics/Environment/Planets/GreenPlanet.png" type="Texture" id=4]
-[ext_resource path="res://Graphics/Environment/Planets/PinkPlanet.png" type="Texture" id=5]
-[ext_resource path="res://Graphics/Environment/Planets/IcePlanet.png" type="Texture" id=6]
-[ext_resource path="res://Graphics/Environment/Planets/EarthLikePlanet.png" type="Texture" id=7]
-[ext_resource path="res://Graphics/Environment/Planets/XPlanet.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Environment/Planets/Pink3.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Environment/Planets/Green3.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/UI/JournalEntries.gd" type="Script" id=6]
 [ext_resource path="res://Graphics/UI/lvlup.png" type="Texture" id=9]
 [ext_resource path="res://Graphics/UI/dmgup.png" type="Texture" id=10]
 [ext_resource path="res://Graphics/UI/speedup.png" type="Texture" id=11]
@@ -122,70 +120,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GridContainer" type="GridContainer" parent="TabContainer/Journal/ScrollContainer"]
+[node name="JournalEntries" type="GridContainer" parent="TabContainer/Journal/ScrollContainer"]
+margin_right = 288.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 270, 128 )
+columns = 3
+script = ExtResource( 6 )
 
-[node name="JournalEntry" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
-visible = false
+[node name="JournalEntry" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 280.0
-margin_bottom = 60.0
 PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
 
-[node name="JournalEntry2" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
+[node name="JournalEntry2" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 280.0
-margin_bottom = 60.0
-Icon = ExtResource( 4 )
-PlanetName = "Netre Gorsef"
-PlanetDescription = "Green planet full of wild forests. It is inhabited by over 3500 various  species."
+margin_left = 4.0
+margin_right = 4.0
+Icon = ExtResource( 5 )
+PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
 type = 1
 
-[node name="JournalEntry3" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
+[node name="JournalEntry3" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 280.0
-margin_bottom = 60.0
-Icon = ExtResource( 5 )
-PlanetName = "Kinpy"
-PlanetDescription = "Planet covered with pink dust. There is no life on its surface. However its beautiful caves are occupied by various creatures."
+margin_left = 4.0
+margin_right = 4.0
+Icon = ExtResource( 4 )
+PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
 type = 2
-
-[node name="JournalEntry4" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 280.0
-margin_bottom = 60.0
-Icon = ExtResource( 6 )
-PlanetName = "Eilubec"
-PlanetDescription = "Ice planet with over 5000 ocean lifeforms and 1500 land species  confirmed."
-type = 3
-
-[node name="JournalEntry5" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 280.0
-margin_bottom = 60.0
-Icon = ExtResource( 7 )
-PlanetName = "Keli-Thare"
-PlanetDescription = "A planet with a climate similar to Earth inhabited by human-like life forms wielding more advanced technology than humans."
-type = 4
-
-[node name="JournalEntry6" parent="TabContainer/Journal/ScrollContainer/GridContainer" instance=ExtResource( 3 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 280.0
-margin_bottom = 60.0
-Icon = ExtResource( 8 )
-PlanetName = "Planet X"
-PlanetDescription = "Planet X"
-type = 5
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 156.246

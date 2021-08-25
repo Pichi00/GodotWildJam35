@@ -13,7 +13,10 @@ func _ready():
 	type = randi() % (1 + int(Global.player_hp < Global.player_max_hp))
 	match type:
 		Types.COIN:
-			$AnimatedSprite.animation = "coin"
+			if randi()%5==0:
+				$AnimatedSprite.animation = "gold_coin"
+			else:
+				$AnimatedSprite.animation = "coin"
 		Types.HEART:
 			$AnimatedSprite.animation = "heart"
 

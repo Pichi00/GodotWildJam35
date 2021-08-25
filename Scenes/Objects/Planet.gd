@@ -12,20 +12,13 @@ func _ready():
 	$ValueLabel.hide()
 	$CanvasLayer/NewEntry.hide()
 	set_type()
-	$TextureProgress.value = 100
+	$DiscoverProgress.value = 0
 	unlocked = Global.planets_unlocked[type]
 
-#func _process(delta):
-#	if !revealed && !$AnimationPlayer.is_playing():
-#		$TextureProgress.value = move_toward($TextureProgress.value,100, 5)
-#	elif revealed:
-#		$TextureProgress.value = 0
-
 func _on_Planet_body_entered(body):
-	if !revealed:
-		#$AnimationPlayer.play("Reveal"+str(type))
-		$AnimationPlayer.play("NewReveal")
-	
+		if !revealed:
+			$AnimationPlayer.playback_speed =(1.0 - float(type/10.0))
+			$AnimationPlayer.play("Reveal")
 
 func set_type():
 	rng.randomize()
@@ -44,17 +37,17 @@ func set_type():
 		$Sprite.animation = "Ice"
 	elif(draw >= Global.chances[Global.level-1][8] && draw <= Global.chances[Global.level-1][9]):
 		type = Global.PLANETS.EARTH
-		$Sprite.animation = "Earth"
+		$Sprite.animation = "Red"
 	else:
 		type = Global.PLANETS.X
 		$Sprite.animation = "X"
 	planet_value = 10 + type * 10
 
 func reveal_reward():
-	revealed = true
 	if(type==Global.PLANETS.X):
 		get_tree().change_scene("res://Scenes/UI/WinScreen.tscn")
 	$ValueLabel.text="+"+str(planet_value)
+	$AnimationPlayer.playback_speed = 1
 	$AnimationPlayer.play("AddMoney")
 	$RevealSound.play()
 	Global.money += planet_value
@@ -63,6 +56,10 @@ func reveal_reward():
 		$AnimationPlayer.play("NewEntry")
 	emit_signal("reward")
 
+func play_new_reveal():
+	revealed = true
+	$AnimationPlayer.playback_speed = 1.0
+	$AnimationPlayer.play("NewReveal")
 
 func _on_Planet_body_exited(body):
 	if !revealed:

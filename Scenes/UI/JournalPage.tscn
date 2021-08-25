@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scenes/UI/JournalPage.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/Actors/shootball.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/Environment/Landscapes/Swamp.png" type="Texture" id=3]
+[ext_resource path="res://Graphics/Environment/Creatures/MudFrog.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Environment/Planets/DirtPlanet.png" type="Texture" id=5]
+[ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=6]
+
+[node name="JournalPage" type="Control" groups=[
+"PauseScreen",
+]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -12.0
+margin_bottom = -225.0
+rect_min_size = Vector2( 288, 190 )
+theme = ExtResource( 6 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.054902, 0.0392157, 0.227451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -20.0
+margin_top = 4.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DirtPlanet" type="Sprite" parent="."]
+position = Vector2( 41, 40 )
+texture = ExtResource( 5 )
+
+[node name="Swamp" type="Sprite" parent="."]
+position = Vector2( 182, 136 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 3 )
+
+[node name="MudFrog" type="Sprite" parent="."]
+position = Vector2( 40, 133 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 11.0
+margin_top = 167.0
+margin_right = 71.0
+margin_bottom = 181.0
+text = "Gumdorf"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 79.6
+margin_top = 4.0
+margin_right = 157.6
+margin_bottom = 18.0
+text = "Driwn Torb"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 80.0
+margin_top = 25.0
+margin_right = 334.0
+margin_bottom = 73.0
+rect_scale = Vector2( 0.8, 0.8 )
+text = "Brown, dirt planet covered in mud. It’s inhabited by amphibian-like and reptile-like creatures."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
