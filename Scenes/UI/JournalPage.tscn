@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/UI/JournalPage.gd" type="Script" id=1]
-[ext_resource path="res://Graphics/Actors/shootball.png" type="Texture" id=2]
+[ext_resource path="res://Graphics/UI/ExitButton.png" type="Texture" id=2]
 [ext_resource path="res://Graphics/Environment/Landscapes/Swamp.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/Environment/Creatures/MudFrog.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Environment/Planets/DirtPlanet.png" type="Texture" id=5]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=6]
+[ext_resource path="res://Graphics/UI/JournalPageUI.png" type="Texture" id=7]
 
 [node name="JournalPage" type="Control" groups=[
 "PauseScreen",
@@ -24,7 +25,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.054902, 0.0392157, 0.227451, 1 )
+color = Color( 0.0980392, 0.0901961, 0.172549, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -32,57 +33,68 @@ __meta__ = {
 [node name="ExitButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -20.0
-margin_top = 4.0
-margin_bottom = 16.0
+margin_left = -14.0
+margin_top = 2.0
+margin_right = -4.0
+margin_bottom = 13.0
 texture_normal = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DirtPlanet" type="Sprite" parent="."]
-position = Vector2( 41, 40 )
+[node name="Planet" type="Sprite" parent="."]
+position = Vector2( 7, 6 )
 texture = ExtResource( 5 )
+centered = false
 
-[node name="Swamp" type="Sprite" parent="."]
-position = Vector2( 182, 136 )
-scale = Vector2( 0.8, 0.8 )
+[node name="Landscape" type="Sprite" parent="."]
+position = Vector2( 7, 94 )
 texture = ExtResource( 3 )
+centered = false
 
-[node name="MudFrog" type="Sprite" parent="."]
-position = Vector2( 40, 133 )
-texture = ExtResource( 4 )
-
-[node name="Label" type="Label" parent="."]
-margin_left = 11.0
-margin_top = 167.0
-margin_right = 71.0
-margin_bottom = 181.0
-text = "Gumdorf"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_left = 79.6
-margin_top = 4.0
-margin_right = 157.6
-margin_bottom = 18.0
+[node name="PlanetName" type="Label" parent="."]
+margin_left = 98.0
+margin_top = 9.0
+margin_right = 278.0
+margin_bottom = 23.0
+rect_scale = Vector2( 0.6, 0.6 )
 text = "Driwn Torb"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="."]
-margin_left = 80.0
-margin_top = 25.0
-margin_right = 334.0
-margin_bottom = 73.0
+[node name="CreatureName" type="Label" parent="."]
+margin_left = 219.0
+margin_top = 97.0
+margin_right = 294.0
+margin_bottom = 120.0
 rect_scale = Vector2( 0.8, 0.8 )
+text = "Gumdorf"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Description" type="Label" parent="."]
+margin_left = 98.0
+margin_top = 21.0
+margin_right = 460.0
+margin_bottom = 145.0
+rect_scale = Vector2( 0.5, 0.5 )
 text = "Brown, dirt planet covered in mud. It’s inhabited by amphibian-like and reptile-like creatures."
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MudFrog" type="Sprite" parent="."]
+position = Vector2( 216, 119 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="JournalPageUI" type="Sprite" parent="."]
+position = Vector2( 145, 95 )
+texture = ExtResource( 7 )
 
 [connection signal="pressed" from="ExitButton" to="." method="_on_ExitButton_pressed"]
