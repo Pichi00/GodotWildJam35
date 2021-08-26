@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/UI/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/UpgradeItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/UI/JournalEntry.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Graphics/Environment/Planets/Pink3.png" type="Texture" id=4]
+[ext_resource path="res://Graphics/Environment/Landscapes/Swamp.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/Environment/Planets/Green3.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/UI/JournalEntries.gd" type="Script" id=6]
+[ext_resource path="res://Graphics/Environment/Planets/Yellow.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Environment/Creatures/MudFrog.png" type="Texture" id=8]
 [ext_resource path="res://Graphics/UI/lvlup.png" type="Texture" id=9]
 [ext_resource path="res://Graphics/UI/dmgup.png" type="Texture" id=10]
 [ext_resource path="res://Graphics/UI/speedup.png" type="Texture" id=11]
@@ -34,7 +36,7 @@ margin_left = -0.445465
 margin_top = -0.44545
 margin_right = -0.445465
 margin_bottom = -0.44545
-color = Color( 0.0862745, 0.0156863, 0.160784, 0.721569 )
+color = Color( 0.0980392, 0.0901961, 0.172549, 0.705882 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -121,35 +123,48 @@ __meta__ = {
 }
 
 [node name="JournalEntries" type="GridContainer" parent="TabContainer/Journal/ScrollContainer"]
-margin_right = 288.0
+margin_right = 250.0
 margin_bottom = 190.0
-rect_min_size = Vector2( 270, 128 )
+rect_min_size = Vector2( 250, 190 )
 columns = 3
 script = ExtResource( 6 )
 
 [node name="JournalEntry" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
+margin_right = 80.0
+margin_bottom = 80.0
+Creature = ExtResource( 8 )
+Landscape = ExtResource( 4 )
+PlanetDescription = "Planet full of swamps. It’s inhabited by amphibian-like and reptile-like creatures."
+CreatureName = "Gumdorf"
 
 [node name="JournalEntry2" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4.0
-margin_right = 4.0
-Icon = ExtResource( 5 )
-PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
+margin_left = 84.0
+margin_right = 164.0
+margin_bottom = 80.0
+Icon = ExtResource( 7 )
+Creature = ExtResource( 8 )
+Landscape = ExtResource( 4 )
+PlanetName = "Yellow"
+PlanetDescription = "Yellow desc"
+CreatureName = "Xdd"
 type = 1
 
 [node name="JournalEntry3" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
-visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 4.0
-margin_right = 4.0
-Icon = ExtResource( 4 )
-PlanetDescription = "Brown dirt planet covered in mud. No life forms have been confirmed on it."
+margin_left = 168.0
+margin_right = 248.0
+margin_bottom = 80.0
+Icon = ExtResource( 5 )
+Creature = ExtResource( 8 )
+Landscape = ExtResource( 4 )
+PlanetName = "Green"
+PlanetDescription = "Green desc"
+CreatureName = "Xdd"
 type = 2
 
 [node name="TextureButton" type="TextureButton" parent="."]

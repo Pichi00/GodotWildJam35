@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Graphics/Environment/Planets/DirtPlanet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/UI/JournalEntry.gd" type="Script" id=2]
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=3]
 [ext_resource path="res://Scenes/UI/JournalPage.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Graphics/UI/PlanetOutline.png" type="Texture" id=5]
 
 [node name="JournalEntry" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_min_size = Vector2( 288, 190 )
+margin_right = -220.0
+margin_bottom = -145.0
+rect_min_size = Vector2( 80, 80 )
 theme = ExtResource( 3 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -17,17 +20,24 @@ __meta__ = {
 Icon = ExtResource( 1 )
 PlanetName = "Driwn Torb"
 PlanetDescription = "Brown dirt planet."
+JournalPage = ExtResource( 4 )
 
 [node name="Icon" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -220.0
-margin_bottom = -143.0
-rect_min_size = Vector2( 60, 60 )
+margin_left = 2.0
+margin_top = 2.0
+margin_right = -210.0
+margin_bottom = -112.0
+rect_min_size = Vector2( 76, 76 )
 color = Color( 0, 0, 0, 0.243137 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlanetOutline" type="Sprite" parent="."]
+position = Vector2( 40, 40 )
+texture = ExtResource( 5 )
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_right = 80.0
@@ -37,8 +47,5 @@ texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="JournalPage" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
