@@ -45,14 +45,7 @@ func _physics_process(delta):
 func _input(event):
 	if event.is_action_pressed("attack"):
 		damage = Global.player_damage
-		match Global.gun_level:
-			2:
-				shot_two()
-			3:
-				shot_one()
-				shot_two()
-			_:
-				shot_one()
+		shot_one()
 		$ShotSound.play()
 
 

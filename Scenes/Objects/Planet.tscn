@@ -20,19 +20,19 @@ atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 7 )
-region = Rect2( 0, 0, 80, 80 )
-
-[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 13 )
 region = Rect2( 0, 0, 80, 80 )
 
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 14 )
+region = Rect2( 0, 0, 70, 64 )
+
 [sub_resource type="AtlasTexture" id=4]
-atlas = ExtResource( 8 )
+atlas = ExtResource( 6 )
 region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=5]
-atlas = ExtResource( 5 )
+atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=6]
@@ -40,12 +40,12 @@ atlas = ExtResource( 1 )
 region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 6 )
+atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 14 )
-region = Rect2( 0, 0, 70, 64 )
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 80, 80 )
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
@@ -56,22 +56,22 @@ animations = [ {
 }, {
 "frames": [ SubResource( 2 ) ],
 "loop": true,
-"name": "Brown",
+"name": "Red",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 3 ) ],
 "loop": true,
-"name": "Red",
+"name": "Purple",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 4 ) ],
 "loop": true,
-"name": "Ice",
+"name": "Yellow",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 5 ) ],
 "loop": true,
-"name": "Green",
+"name": "Brown",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 6 ) ],
@@ -81,19 +81,19 @@ animations = [ {
 }, {
 "frames": [ SubResource( 7 ) ],
 "loop": true,
-"name": "Yellow",
+"name": "Green",
 "speed": 5.0
 }, {
 "frames": [ SubResource( 8 ) ],
 "loop": true,
-"name": "Purple",
+"name": "Ice",
 "speed": 5.0
 } ]
 
 [sub_resource type="CircleShape2D" id=10]
 radius = 32.0
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=11]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -108,7 +108,7 @@ tracks/0/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=12]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/NewEntry:visible")
@@ -135,7 +135,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=13]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Clouds/1:position")
 tracks/0/interp = 1
@@ -247,7 +247,7 @@ tracks/8/keys = {
 "values": [ false ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=14]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -288,7 +288,7 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=15]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -329,7 +329,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -370,7 +370,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 length = 2.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -411,7 +411,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=18]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -452,7 +452,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=19]
 length = 3.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -493,7 +493,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=20]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("DiscoverProgress:value")
@@ -534,7 +534,7 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=21]
 resource_name = "AddMoney"
 length = 0.6
 tracks/0/type = "value"
@@ -610,24 +610,27 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ComeBack = SubResource( 12 )
-anims/NewEntry = SubResource( 13 )
-anims/NewReveal = SubResource( 14 )
-anims/Reveal = SubResource( 15 )
-anims/Reveal0 = SubResource( 16 )
-anims/Reveal1 = SubResource( 17 )
-anims/Reveal2 = SubResource( 18 )
-anims/Reveal3 = SubResource( 19 )
-anims/Reveal4 = SubResource( 20 )
-anims/Reveal5 = SubResource( 21 )
+anims/ComeBack = SubResource( 11 )
+anims/NewEntry = SubResource( 12 )
+anims/NewReveal = SubResource( 13 )
+anims/Reveal = SubResource( 14 )
+anims/Reveal0 = SubResource( 15 )
+anims/Reveal1 = SubResource( 16 )
+anims/Reveal2 = SubResource( 17 )
+anims/Reveal3 = SubResource( 18 )
+anims/Reveal4 = SubResource( 19 )
+anims/Reveal5 = SubResource( 20 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/AddMoney = SubResource( 23 )
+anims/AddMoney = SubResource( 21 )
 
 [node name="ValueLabel" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
 margin_left = 32.0
+margin_top = -32.0
 margin_right = 75.0
-margin_bottom = 17.0
+margin_bottom = -15.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0.698039, 0.698039, 0.698039, 1 )
 text = "+10"

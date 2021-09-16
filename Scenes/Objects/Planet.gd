@@ -52,6 +52,7 @@ func reveal_reward():
 		Global.planets_unlocked[type] = true
 		$AnimationPlayer.play("NewEntry")
 	emit_signal("reward")
+	Global.save_game()
 
 func play_new_reveal():
 	revealed = true

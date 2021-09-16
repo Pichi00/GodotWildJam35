@@ -1,5 +1,8 @@
 extends Node
 
+const SAVE_DIR = "user://saves/"
+var save_path = SAVE_DIR + "save.dat"
+
 var money = 0
 var player_max_hp = 10
 var player_hp = 10
@@ -9,7 +12,6 @@ var player_damage = 1
 var level = 1
 var soundOn = true
 var soundLevel = -40
-var gun_level = 1
 
 const MAX_LEVEL = 4
 const MAX_DMG = 2.5
@@ -36,4 +38,44 @@ var e_chances_lvl4 = [0, 9, 10, 59, 60, 99]
 var e_chances = [e_chances_lvl1, e_chances_lvl2, e_chances_lvl3, e_chances_lvl4]
 
 
+func save_game():
+	var data_to_save = {
+		"money": money,
+		"player_hp": player_hp,
+		"player_speed": player_speed,
+		"player_speed_lvl": player_speed_lvl,
+		"player_damage": player_damage,
+		"level": level,
+		"soundOn": soundOn,
+		"soundLevel": soundLevel,
+		"planets_unlocked": planets_unlocked,
+		"planets_visited": planets_visited
+	}
+	var dir = Directory.new()
+	if !dir.dir_exists(SAVE_DIR):
+		dir.make_dir_recursive(SAVE_DIR)
+	
+	var file = File.new()
+	var error = file.open(save_path, File.WRITE)
+	if error == OK:
+		file.store_var(data_to_save)
+	else:
+		print("Error with saving the data")
+	file.close()
 
+func load_game():
+	var file = File.new()
+	if file.file_exists(save_path):
+		var error = file.open(save_path, File.READ)
+		if error == OK:
+			var loaded_data = file.get_var()
+			money = loaded_data.money
+			player_hp = loaded_data.player_hp
+			player_speed = loaded_data.player_speed
+			player_damage = loaded_data.player_damage
+			player_speed_lvl = loaded_data.player_speed_lvl
+			level = loaded_data.level
+			soundOn = loaded_data.soundOn
+			soundLevel = loaded_data.soundLevel
+			planets_unlocked = loaded_data.planets_unlocked
+			planets_visited = loaded_data.planets_visited

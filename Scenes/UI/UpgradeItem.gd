@@ -63,6 +63,7 @@ func _on_BuyButton_pressed():
 				$LeftPanel/BuyButton.disabled = true
 				$LeftPanel/Price.text = "MAX"
 			$RightPanel/Value.text = str(Global.player_speed_lvl)
+	Global.save_game()
 
 func update_price():
 	match Title:
