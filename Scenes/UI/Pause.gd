@@ -40,3 +40,8 @@ func _on_TextureButton_pressed():
 		$TextureButton.texture_normal = soundOffIcon
 		for audio in Audios:
 			audio.volume_db = -80
+
+
+func update_entries():
+	for entry in $TabContainer/Journal/ScrollContainer/JournalEntries.get_children():
+		entry.update_icon()

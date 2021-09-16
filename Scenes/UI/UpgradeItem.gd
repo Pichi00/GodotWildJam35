@@ -47,8 +47,8 @@ func _on_BuyButton_pressed():
 				$LeftPanel/Price.text = "MAX"
 			$RightPanel/Value.text = str(Global.level)
 		"Damage":
-			Global.player_damage += 1
-			Price = Global.player_damage * 50
+			Global.player_damage += 0.5
+			Price = Global.player_damage * 100
 			$LeftPanel/Price.text = str(Price)
 			if Global.player_damage >= Global.MAX_DMG:
 				$LeftPanel/BuyButton.disabled = true

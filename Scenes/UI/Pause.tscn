@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/UI/Pause.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/UI/UpgradeItem.tscn" type="PackedScene" id=2]
@@ -14,6 +14,21 @@
 [ext_resource path="res://Themes/MainTheme.tres" type="Theme" id=12]
 [ext_resource path="res://Graphics/UI/SoundOn.png" type="Texture" id=13]
 [ext_resource path="res://Graphics/UI/SoundOff.png" type="Texture" id=14]
+[ext_resource path="res://Graphics/Environment/Creatures/PinkFox.png" type="Texture" id=15]
+[ext_resource path="res://Graphics/Environment/Planets/Pink3.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/Environment/Planets/MysteriousPlanet.png" type="Texture" id=17]
+[ext_resource path="res://Graphics/Environment/Planets/Purple.png" type="Texture" id=18]
+[ext_resource path="res://Graphics/Environment/Planets/Ice2.png" type="Texture" id=19]
+[ext_resource path="res://Graphics/Environment/Planets/RedElectroPlanet.png" type="Texture" id=20]
+[ext_resource path="res://Graphics/Environment/Creatures/LightElectro.png" type="Texture" id=21]
+[ext_resource path="res://Graphics/Environment/Creatures/YellowCreature.png" type="Texture" id=22]
+[ext_resource path="res://Graphics/Environment/Landscapes/Desert.png" type="Texture" id=23]
+[ext_resource path="res://Graphics/Environment/Landscapes/cave.png" type="Texture" id=24]
+[ext_resource path="res://Graphics/Environment/Creatures/PurpleCreature.png" type="Texture" id=25]
+[ext_resource path="res://Graphics/Environment/Landscapes/forest.png" type="Texture" id=26]
+[ext_resource path="res://Graphics/Environment/Creatures/Birdo.png" type="Texture" id=27]
+[ext_resource path="res://Graphics/Environment/Creatures/DoublePenguin.png" type="Texture" id=28]
+[ext_resource path="res://Graphics/Environment/Landscapes/ice.png" type="Texture" id=29]
 
 [node name="Pause" type="Control" groups=[
 "PauseScreen",
@@ -118,14 +133,15 @@ margin_bottom = -8.0
 [node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Journal"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 16.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="JournalEntries" type="GridContainer" parent="TabContainer/Journal/ScrollContainer"]
-margin_right = 250.0
+margin_right = 270.0
 margin_bottom = 190.0
-rect_min_size = Vector2( 250, 190 )
+rect_min_size = Vector2( 270, 190 )
 columns = 3
 script = ExtResource( 6 )
 
@@ -146,11 +162,11 @@ margin_left = 84.0
 margin_right = 164.0
 margin_bottom = 80.0
 Icon = ExtResource( 7 )
-Creature = ExtResource( 8 )
-Landscape = ExtResource( 4 )
+Creature = ExtResource( 22 )
+Landscape = ExtResource( 23 )
 PlanetName = "Yellow"
 PlanetDescription = "Yellow desc"
-CreatureName = "Xdd"
+CreatureName = "Yellow Creature"
 type = 1
 
 [node name="JournalEntry3" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
@@ -160,12 +176,105 @@ margin_left = 168.0
 margin_right = 248.0
 margin_bottom = 80.0
 Icon = ExtResource( 5 )
+Creature = ExtResource( 27 )
+Landscape = ExtResource( 26 )
+PlanetName = "Green"
+PlanetDescription = "Green desc"
+CreatureName = "Xdd"
+type = 2
+
+[node name="JournalEntry4" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 164.0
+Icon = ExtResource( 16 )
+Creature = ExtResource( 15 )
+Landscape = ExtResource( 24 )
+PlanetName = "Kinpy"
+PlanetDescription = "Planet covered with pink dust. There are little life forms on its surface. However, its beautiful crystal caves are occupied by various creatures.
+"
+CreatureName = "Pink fox"
+type = 3
+
+[node name="JournalEntry5" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_top = 84.0
+margin_right = 164.0
+margin_bottom = 164.0
+Icon = ExtResource( 19 )
+Creature = ExtResource( 28 )
+Landscape = ExtResource( 29 )
+PlanetName = "Green"
+PlanetDescription = "Green desc"
+CreatureName = "Xdd"
+type = 4
+
+[node name="JournalEntry6" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 168.0
+margin_top = 84.0
+margin_right = 248.0
+margin_bottom = 164.0
+Icon = ExtResource( 18 )
+Creature = ExtResource( 25 )
+Landscape = ExtResource( 4 )
+PlanetName = "Green"
+PlanetDescription = "Green desc"
+CreatureName = "Xdd"
+type = 5
+
+[node name="JournalEntry7" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 168.0
+margin_right = 80.0
+margin_bottom = 248.0
+Icon = ExtResource( 20 )
+Creature = ExtResource( 21 )
+Landscape = ExtResource( 4 )
+PlanetName = "Red"
+PlanetDescription = "Red desc"
+CreatureName = "Red Electro"
+type = 6
+
+[node name="JournalEntry8" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 84.0
+margin_top = 168.0
+margin_right = 164.0
+margin_bottom = 248.0
+Icon = ExtResource( 17 )
 Creature = ExtResource( 8 )
 Landscape = ExtResource( 4 )
 PlanetName = "Green"
 PlanetDescription = "Green desc"
 CreatureName = "Xdd"
-type = 2
+type = 7
+
+[node name="JournalEntry9" parent="TabContainer/Journal/ScrollContainer/JournalEntries" instance=ExtResource( 3 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 168.0
+margin_top = 168.0
+margin_right = 248.0
+margin_bottom = 248.0
+Icon = ExtResource( 17 )
+Creature = ExtResource( 8 )
+Landscape = ExtResource( 4 )
+PlanetName = "Green"
+PlanetDescription = "Green desc"
+CreatureName = "Xdd"
+type = 8
 
 [node name="TextureButton" type="TextureButton" parent="."]
 margin_left = 156.246

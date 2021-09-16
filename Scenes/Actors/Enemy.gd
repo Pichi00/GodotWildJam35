@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-var speed = 20
 var rotation_speed = 5
 var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
@@ -9,10 +8,14 @@ var rotating = false
 var rot_to = 180
 var angle
 var rand_dir = 1
-var MAX_HP = 9
 var hp
+var rng = RandomNumberGenerator.new()
+var enemy_level = 1
 
-export var bullet_speed = 120
+export var damage = 1
+export var MAX_HP = 20
+export var speed = 45
+export var bullet_speed = 160
 export (PackedScene) var bullet
 export (PackedScene) var collectible
 
@@ -21,11 +24,30 @@ signal destroy_enemy(enemy)
 onready var player = get_tree().get_nodes_in_group("Player")[0]
 
 func _ready():
+	rng.randomize()
+	var draw = rng.randi()%100
+	if draw >= Global.e_chances[Global.level-1][0] && draw <= Global.e_chances[Global.level-1][1]:
+		enemy_level = 1
+	elif draw >= Global.e_chances[Global.level-1][2] && draw <= Global.e_chances[Global.level-1][3]:
+		enemy_level = 2
+	else:
+		enemy_level = 3
+	match enemy_level:
+		1:
+			$Sprite.modulate = Color(0.556863, 0.956863, 0.160784)
+		2:
+			$Sprite.modulate = Color(1, 0.913725, 0)
+		3:
+			$Sprite.modulate = Color(1, 0.031373, 0.031373)
+	damage = enemy_level
+	MAX_HP = 10 + (10 * enemy_level)
+	speed = 40 + (5 * enemy_level)
+	bullet_speed = 155 + (5 * enemy_level)
 	connect("destroy_enemy",get_parent(),"_on_Player_destroy_enemy")
 	hp = MAX_HP
 	#global_position = get_parent().enemy_spawn_position
-	randomize()
-	if randi()%2==0:
+	rng.randomize()
+	if rng.randi()%2==0:
 		rand_dir = 1
 	else:
 		rand_dir=-1
@@ -45,8 +67,9 @@ func _physics_process(delta):
 	rotation_degrees = move_toward(rotation_degrees, angle, rotation_speed)
 	move_and_slide(velocity * speed)
 
-func take_dmg():
-	hp -= Global.player_damage
+func take_dmg(var dmg):
+	hp -= dmg
+	print(hp)
 	if hp <= 0:
 		destroy()
 
@@ -62,8 +85,8 @@ func _on_Area2D_body_exited(body):
 
 func _on_Hitbox_body_entered(body):
 	if body.is_in_group("Bullet"):
+		take_dmg(body.damage)
 		body.queue_free()
-		take_dmg()
 		$HP_Bar.value = (hp * 100) / MAX_HP
 
 func _on_Timer_timeout():
@@ -71,6 +94,8 @@ func _on_Timer_timeout():
 		var new_bullet = bullet.instance()
 		add_child(new_bullet)
 		new_bullet.global_position = $BulletSpawner.global_position
+		new_bullet.rotation_degrees = self.rotation_degrees
+		new_bullet.velocity = new_bullet.direction.rotated(deg2rad(new_bullet.rotation_degrees))
 		$ShotSound.play()
 		$Timer.wait_time = randi() % 2 + 1
 

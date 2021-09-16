@@ -54,6 +54,11 @@ position = Vector2( 10, 107 )
 texture = ExtResource( 5 )
 centered = false
 
+[node name="Creature" type="Sprite" parent="Page"]
+position = Vector2( 219, 132 )
+texture = ExtResource( 4 )
+centered = false
+
 [node name="PlanetName" type="Label" parent="Page"]
 margin_left = 101.0
 margin_top = 22.0
@@ -66,14 +71,15 @@ __meta__ = {
 }
 
 [node name="CreatureName" type="Label" parent="Page"]
-margin_left = 222.0
-margin_top = 110.0
-margin_right = 297.0
-margin_bottom = 133.0
-rect_scale = Vector2( 0.8, 0.8 )
+margin_left = 219.0
+margin_top = 107.0
+margin_right = 329.0
+margin_bottom = 145.0
+rect_scale = Vector2( 0.6, 0.6 )
 text = "..."
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -90,10 +96,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Creature" type="Sprite" parent="Page"]
-position = Vector2( 219, 132 )
-texture = ExtResource( 4 )
-centered = false
+[node name="LandscapeCounter" type="Label" parent="Page"]
+margin_left = 184.0
+margin_top = 187.0
+margin_right = 225.0
+margin_bottom = 201.0
+rect_scale = Vector2( 0.6, 0.6 )
+text = "0/10"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreatureCounter" type="Label" parent="Page" groups=[
+"PauseScreen",
+]]
+margin_left = 259.0
+margin_top = 187.0
+margin_right = 298.0
+margin_bottom = 201.0
+rect_scale = Vector2( 0.6, 0.6 )
+text = "0/5"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="JournalPageUI" type="Sprite" parent="Page"]
 position = Vector2( 148, 108 )

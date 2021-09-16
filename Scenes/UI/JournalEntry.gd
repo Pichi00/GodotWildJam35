@@ -14,7 +14,7 @@ var LockedIcon = "res://Graphics/Environment/Planets/MysteriousPlanet.png"
 var LockedCreature = "res://Graphics/Environment/Creatures/LockedCreature.png"
 var LockedLandscape = "res://Graphics/Environment/Landscapes/LockedLandscape.png"
 
-func _ready():
+func update_icon():
 	if Global.planets_unlocked[type]:
 		$TextureButton.texture_normal = Icon
 	else:

@@ -5,9 +5,25 @@
 [ext_resource path="res://Graphics/Environment/Planets/XPlanet.png" type="Texture" id=3]
 [ext_resource path="res://Graphics/UI/itch.png" type="Texture" id=4]
 [ext_resource path="res://Graphics/UI/twitter.png" type="Texture" id=5]
-[ext_resource path="res://Scenes/UI/WinScreen.gd" type="Script" id=6]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+
+func _on_Twitter_pressed():
+	OS.shell_open(\"https://twitter.com/pichiDev\")
+
+
+func _on_Itch_pressed():
+	OS.shell_open(\"https://pichidev.itch.io/\")
+
+
+func _on_Button_pressed():
+	get_tree().change_scene(\"res://Scenes/MainMenu.tscn\")
+"
+
+[sub_resource type="DynamicFont" id=2]
 size = 34
 font_data = ExtResource( 2 )
 
@@ -15,7 +31,7 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 1 )
-script = ExtResource( 6 )
+script = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -37,7 +53,7 @@ margin_top = 24.0
 margin_right = 500.0
 margin_bottom = 76.0
 rect_scale = Vector2( 0.6, 0.6 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Congratulations!"
 align = 1
 valign = 1

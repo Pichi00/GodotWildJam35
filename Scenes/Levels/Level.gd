@@ -3,8 +3,8 @@ extends Node2D
 export (PackedScene) var enemy
 export (PackedScene) var planet
 export (int) var world_radious = 1200
-export (int) var max_enemies = 8
-export (int) var max_planets = 16
+export (int) var max_enemies = 5
+export (int) var max_planets = 10
 export (float) var min_enemy_distance = 250
 export (float) var max_enemy_distance = 450
 export (float) var first_min_planet_distance = 300

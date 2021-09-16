@@ -6,6 +6,7 @@ var direction = Vector2.ZERO
 var velocity = Vector2.ZERO
 var MAX_HP = 10
 var hp = 10
+var damage = 1
 
 onready var hp_bar = $UI_Layer/UI/TextureProgress
 
@@ -43,6 +44,7 @@ func _physics_process(delta):
 
 func _input(event):
 	if event.is_action_pressed("attack"):
+		damage = Global.player_damage
 		match Global.gun_level:
 			2:
 				shot_two()
@@ -75,6 +77,7 @@ func add_hp():
 
 func update_money():
 	$UI_Layer/UI/Money_Label.text = str(Global.money)
+	$UI_Layer/UI/Pause.update_entries()
 
 func _on_EnemiesArea_body_exited(body):
 	emit_signal("destroy_enemy", body)
@@ -85,8 +88,10 @@ func _on_WorldArea_area_exited(area):
 
 func shot_one():
 	var new_bullet = bullet.instance()
-	$Wings.add_child(new_bullet)
+	add_child(new_bullet)
 	new_bullet.global_position = $Wings/BulletSpawner.global_position
+	new_bullet.rotation_degrees = $Wings.rotation_degrees
+	new_bullet.velocity = new_bullet.direction.rotated(deg2rad(new_bullet.rotation_degrees))
 
 func shot_two():
 	var new_bullet_1 = bullet.instance()
