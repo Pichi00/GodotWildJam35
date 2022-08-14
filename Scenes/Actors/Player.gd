@@ -21,7 +21,7 @@ func _ready():
 	update_hp()
 	update_money()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	direction.y = (int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up")))
 	velocity = direction.rotated(deg2rad($Capsule.rotation_degrees))
 	velocity = velocity.normalized()
@@ -39,7 +39,7 @@ func _physics_process(delta):
 	else:
 		$Camera2D.zoom = Vector2(1.3,1.3)
 
-	move_and_slide(velocity * Global.player_speed)
+	velocity = move_and_slide(velocity * Global.player_speed)
 	
 
 func _input(event):
@@ -61,7 +61,9 @@ func update_hp():
 	Global.player_max_hp = MAX_HP
 	Global.player_hp = hp
 	if hp == 0:
-		get_tree().change_scene("res://Scenes/UI/DeathScreen.tscn")
+		var err = get_tree().change_scene("res://Scenes/UI/DeathScreen.tscn")
+		if err:
+			print("(ERROR CHANGING SCENE)",err)
 
 func add_hp():
 	if hp < MAX_HP:

@@ -1,17 +1,16 @@
 extends Node2D
 
-export (PackedScene) var enemy
-export (PackedScene) var planet
+export (PackedScene) var enemy_scene
+export (PackedScene) var planet_scene
 export (int) var world_radious = 1200
 export (int) var max_enemies = 5
 export (int) var max_planets = 10
-export (float) var min_enemy_distance = 250
-export (float) var max_enemy_distance = 450
-export (float) var first_min_planet_distance = 300
-export (float) var min_planet_distance = 700
-export (float) var max_planet_distance = 1200
+export (float) var min_enemy_distance = 250.0
+export (float) var max_enemy_distance = 450.0
+export (float) var first_min_planet_distance = 300.0
+export (float) var min_planet_distance = 700.0
+export (float) var max_planet_distance = 1200.0
 
-var new_enemy
 var rand_dir = 1
 var enemy_spawn_position 
 var planet_spawn_position 
@@ -24,21 +23,19 @@ func _ready():
 		audio.volume_db = Global.soundLevel
 	$Player.update_money()
 	rng.randomize()
-	for i in range(max_enemies):
+	for _i in range(max_enemies):
 		enemy_spawn()
-	for i in range(max_planets):
+	for _i in range(max_planets):
 		planet_spawn(first_min_planet_distance, max_planet_distance)
 
 func enemy_spawn():
-	var new_enemy = enemy.instance()
+	var new_enemy = enemy_scene.instance()
 	enemy_spawn_position = $Player.global_position + (Vector2.UP.rotated(rng.randf_range(0, PI * 2)) * rng.randf_range(min_enemy_distance, max_enemy_distance))
-#	add_child_below_node($Player, enemy.instance())
 	call_deferred("add_child_below_node",$Player, new_enemy)
 	new_enemy.position = enemy_spawn_position
-#	$EnemySpawnTimer.wait_time = randi() % 4 + 6
 
 func planet_spawn(min_dist, max_dist):
-	var new_planet = planet.instance()
+	var new_planet = planet_scene.instance()
 	var new_pos = Vector2.ZERO
 	var can_spawn = true
 	while(can_spawn):
@@ -55,11 +52,6 @@ func planet_spawn(min_dist, max_dist):
 	call_deferred("add_child_below_node", $Planets, new_planet)
 	new_planet.position = new_pos
 	planets_array.append(new_planet)
-
-#func _on_EnemySpawnTimer_timeout():
-#	for i in range(4):
-#		if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
-#			enemy_spawn()
 
 func update_money():
 	$Player.update_money()

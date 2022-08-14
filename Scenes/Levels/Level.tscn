@@ -8,12 +8,10 @@
 [ext_resource path="res://Sounds/SFX/Pickup_Coin3.wav" type="AudioStream" id=6]
 [ext_resource path="res://Sounds/Music/Adventure_SF_EDM.wav" type="AudioStream" id=7]
 
-[node name="Level" type="Node2D" groups=[
-"Level",
-]]
+[node name="Level" type="Node2D" groups=["Level"]]
 script = ExtResource( 2 )
-enemy = ExtResource( 4 )
-planet = ExtResource( 5 )
+enemy_scene = ExtResource( 4 )
+planet_scene = ExtResource( 5 )
 
 [node name="Planets" type="Node2D" parent="."]
 
@@ -36,15 +34,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CoinSound" type="AudioStreamPlayer" parent="." groups=[
-"SFX",
-]]
+[node name="CoinSound" type="AudioStreamPlayer" parent="." groups=["SFX"]]
 stream = ExtResource( 6 )
 volume_db = -80.0
 
-[node name="Music" type="AudioStreamPlayer" parent="." groups=[
-"SFX",
-]]
+[node name="Music" type="AudioStreamPlayer" parent="." groups=["SFX"]]
 stream = ExtResource( 7 )
 volume_db = -80.0
 autoplay = true

@@ -43,9 +43,9 @@ func _ready():
 	MAX_HP = 10 + (10 * enemy_level)
 	speed = 40 + (5 * enemy_level)
 	bullet_speed = 155 + (5 * enemy_level)
-	connect("destroy_enemy",get_parent(),"_on_Player_destroy_enemy")
+	Global.handle_signal_connection(self, "destroy_enemy", get_parent(),"_on_Player_destroy_enemy")
 	hp = MAX_HP
-	#global_position = get_parent().enemy_spawn_position
+	
 	rng.randomize()
 	if rng.randi()%2==0:
 		rand_dir = 1
@@ -53,7 +53,7 @@ func _ready():
 		rand_dir=-1
 	rotation_degrees = randi()%180 * rand_dir
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_detected:
 		velocity =  player.global_position - global_position
 		velocity = velocity.normalized()
@@ -65,7 +65,7 @@ func _physics_process(delta):
 	if abs(rotation_degrees - angle) >= 180:
 		rotation_degrees = angle 
 	rotation_degrees = move_toward(rotation_degrees, angle, rotation_speed)
-	move_and_slide(velocity * speed)
+	velocity = move_and_slide(velocity * speed)
 
 func take_dmg(var dmg):
 	hp -= dmg

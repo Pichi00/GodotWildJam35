@@ -12,8 +12,8 @@ func _ready():
 	velocity = direction.rotated(deg2rad(rotation_degrees))
 	set_as_toplevel(true)
 
-func _physics_process(delta):
-	move_and_slide(velocity * speed)
+func _physics_process(_delta):
+	velocity = move_and_slide(velocity * speed)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

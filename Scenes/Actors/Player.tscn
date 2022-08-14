@@ -34,9 +34,7 @@ radius = 1200.0
 [sub_resource type="CircleShape2D" id=6]
 radius = 600.0
 
-[node name="Player" type="KinematicBody2D" groups=[
-"Player",
-]]
+[node name="Player" type="KinematicBody2D" groups=["Player"]]
 collision_mask = 130
 script = ExtResource( 1 )
 bullet = ExtResource( 2 )
@@ -46,9 +44,7 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 9 )
 offset = Vector2( 0, -35 )
 
-[node name="BulletSpawner" type="Position2D" parent="Wings" groups=[
-"BulletSpawn",
-]]
+[node name="BulletSpawner" type="Position2D" parent="Wings" groups=["BulletSpawn"]]
 visible = false
 position = Vector2( 0, -32 )
 scale = Vector2( 2, 2 )
@@ -107,8 +103,8 @@ margin_top = 213.4
 margin_right = 42.0
 margin_bottom = 230.4
 rect_scale = Vector2( 0.6, 0.6 )
-custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.858824, 0.254902, 0.380392, 1 )
+custom_fonts/font = SubResource( 2 )
 text = "HP"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -128,8 +124,8 @@ margin_top = 3.0
 margin_right = 326.0
 margin_bottom = 20.0
 rect_scale = Vector2( 0.8, 0.8 )
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.698039, 0.698039, 0.698039, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "0"
 align = 2
 __meta__ = {
@@ -165,9 +161,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemiesArea"]
 shape = SubResource( 6 )
 
-[node name="ShotSound" type="AudioStreamPlayer" parent="." groups=[
-"SFX",
-]]
+[node name="ShotSound" type="AudioStreamPlayer" parent="." groups=["SFX"]]
 stream = ExtResource( 8 )
 volume_db = -80.0
 

@@ -7,13 +7,13 @@ var planet_value = 5
 signal reward
 
 func _ready():
-	connect("reward", get_parent(),"update_money")
+	Global.handle_signal_connection(self, "reward", get_parent(),"update_money")
 	$ValueLabel.hide()
 	$CanvasLayer/NewEntry.hide()
 	set_type()
 	$DiscoverProgress.value = 0
 
-func _on_Planet_body_entered(body):
+func _on_Planet_body_entered(_body):
 		if !revealed:
 			$AnimationPlayer.playback_speed =(1.0 - float(type/10.0))
 			$AnimationPlayer.play("Reveal")
@@ -59,7 +59,7 @@ func play_new_reveal():
 	$AnimationPlayer.playback_speed = 1.0
 	$AnimationPlayer.play("NewReveal")
 
-func _on_Planet_body_exited(body):
+func _on_Planet_body_exited(_body):
 	if !revealed:
 		$AnimationPlayer.play("ComeBack")
 		

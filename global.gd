@@ -79,3 +79,9 @@ func load_game():
 			soundLevel = loaded_data.soundLevel
 			planets_unlocked = loaded_data.planets_unlocked
 			planets_visited = loaded_data.planets_visited
+
+func handle_signal_connection(source: Object, signal_name: String, target: Object, method: String):
+	if !source.is_connected(signal_name, target, method):
+		var err = source.connect(signal_name, target, method)
+		if err:
+			print("Error connecting signal " + signal_name + " to " + method + " method.")
