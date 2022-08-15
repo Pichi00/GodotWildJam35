@@ -2,9 +2,12 @@ extends Node2D
 
 
 export (Vector2) var area_border_scale = Vector2.ONE
-export (PackedScene) var enemy_scene
-export (PackedScene) var planet_scene
-export (int) var world_radious = 1200
+
+export (int) var area_type = area_types.WORKSHOP
+
+export (PackedScene) var enemy_scene = load("res://Scenes/Actors/Enemy.tscn")
+export (PackedScene) var planet_scene = load("res://Scenes/Objects/Planet.tscn")
+
 export (int) var max_enemies = 5
 export (int) var max_planets = 10
 export (float) var min_enemy_distance = 250.0
@@ -18,15 +21,36 @@ var enemy_spawn_position
 var planet_spawn_position 
 var planets_array = []
 
+enum area_types {
+	WORKSHOP
+	EASY
+	MEDIUM
+	HARD
+}
+
 onready var rng := RandomNumberGenerator.new()
 
 func _ready():
+	rng.randomize()
+	
+	match(area_type):
+		area_types.EASY:
+			max_enemies = 5
+		area_types.MEDIUM:
+			max_enemies = 8
+		area_types.HARD:
+			area_border_scale = Vector2(2,2)
+			max_enemies = 12
+		_:
+			area_border_scale = Vector2.ONE
+			max_enemies = 0
+	print(max_enemies)
 	$SpaceRocksAreaShape.texture_scale = area_border_scale
 	$SpaceRocksAreaShape.scale = area_border_scale
 	for audio in get_tree().get_nodes_in_group("SFX"):
 		audio.volume_db = Global.soundLevel
 	$Player.update_money()
-	rng.randomize()
+	
 	for _i in range(max_enemies):
 		enemy_spawn()
 	for _i in range(max_planets):
@@ -72,8 +96,8 @@ func _on_Player_destroy_planet(planet):
 
 func _on_Player_destroy_enemy(enemy):
 	enemy.queue_free()
-	if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
-		enemy_spawn()
+#	if(get_tree().get_nodes_in_group("Enemy").size() <= max_enemies):
+#		enemy_spawn()
 	
 
 func coin_sound():
