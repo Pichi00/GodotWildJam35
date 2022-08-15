@@ -35,7 +35,7 @@ window/stretch/aspect="keep"
 
 [global]
 
-version="0.1.3"
+version="0.2.0 dev"
 
 [importer_defaults]
 
