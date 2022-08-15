@@ -1,5 +1,7 @@
 extends Node2D
 
+
+export (Vector2) var area_border_scale = Vector2.ONE
 export (PackedScene) var enemy_scene
 export (PackedScene) var planet_scene
 export (int) var world_radious = 1200
@@ -19,6 +21,8 @@ var planets_array = []
 onready var rng := RandomNumberGenerator.new()
 
 func _ready():
+	$SpaceRocksAreaShape.texture_scale = area_border_scale
+	$SpaceRocksAreaShape.scale = area_border_scale
 	for audio in get_tree().get_nodes_in_group("SFX"):
 		audio.volume_db = Global.soundLevel
 	$Player.update_money()
